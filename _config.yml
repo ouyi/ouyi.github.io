@@ -41,3 +41,5 @@ plugins:
 
 gems:
   - jemoji
+
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile']
