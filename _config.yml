@@ -41,6 +41,6 @@ plugins:
 #   - vendor/ruby/
 
 exclude:
-    - Gemfile
-    - Gemfile.lock
-    - README.md
+  - Gemfile
+  - Gemfile.lock
+  - README.md
