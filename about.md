@@ -4,4 +4,4 @@ title: About
 permalink: /about/
 ---
 
-Researcher and engineer. Loves simple design and clean code.
+Another geek blog on software engineering, data processing, and cloud computing.
