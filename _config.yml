@@ -24,9 +24,9 @@ github_username: ouyi
 author: Yi Ou
 
 social_media:
-  - { media_name: github, fa_icon: fa-github-square, profile_link: "https://github.com/ouyi" }
-  - { media_name: linkedin, fa_icon: fa-linkedin-square, profile_link: "https://linkedin.com/in/ouyi-cs" }
-  - { media_name: xing, fa_icon: fa-xing-square, profile_link: "https://www.xing.com/profile/Yi_Ou3" }
+  - { media_name: Github, fa_icon: fa-github-square, profile_link: "https://github.com/ouyi" }
+  - { media_name: Linkedin, fa_icon: fa-linkedin-square, profile_link: "https://linkedin.com/in/ouyi-cs" }
+  - { media_name: Xing, fa_icon: fa-xing-square, profile_link: "https://www.xing.com/profile/Yi_Ou3" }
 
 # Build settings
 markdown: kramdown
