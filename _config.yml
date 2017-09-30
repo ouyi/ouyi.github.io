@@ -19,13 +19,11 @@ description: >- # this means to ignore newlines until "baseurl:"
   Researcher and engineer. Loves simple design and clean code.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ouyi.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-linkedin_username: ouyi-cs
-github_username: ouyi
 author: Yi Ou
 
 social_media:
-  - { media_name: Github, fa_icon: fa-github-square, profile_link: "https://github.com/ouyi" }
-  - { media_name: Linkedin, fa_icon: fa-linkedin-square, profile_link: "https://linkedin.com/in/ouyi-cs" }
+  - { media_name: GitHub, fa_icon: fa-github-square, profile_link: "https://github.com/ouyi" }
+  - { media_name: LinkedIn, fa_icon: fa-linkedin-square, profile_link: "https://linkedin.com/in/ouyi-cs" }
   - { media_name: Xing, fa_icon: fa-xing-square, profile_link: "https://www.xing.com/profile/Yi_Ou3" }
 
 # Build settings

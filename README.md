@@ -2,4 +2,4 @@
 
 # Memory Spills
 
-Memory Spills is [a blog based on jeykll](https://ouyi.github.io).
+Memory Spills is [a blog based on Jeykll and hosted on GitHub](https://ouyi.github.io).
