@@ -54,3 +54,4 @@ exclude:
   - README.md
 
 google_analytics: UA-37629863-6
+baidu_autopush: true
