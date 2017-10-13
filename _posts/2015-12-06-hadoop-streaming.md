@@ -23,7 +23,7 @@ The command used to run the Hadoop streaming job was:
 {% highlight bash %}
 hadoop jar contrib/streaming/hadoop-streaming-2.0.0-mr1-cdh4.0.1.jar \
 -mapper '/tmp/mapper.sh Exception' \
--reducer reducer.sh \
+-reducer /tmp/reducer.sh \
 -input /tmp/input \
 -output /tmp/output
 {% endhighlight %}
