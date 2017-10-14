@@ -10,7 +10,7 @@ title: Tags
 
 {% for tag in site.tags %}
     <div id="{{ tag[0] | slugify }}">
-    <h2 class="post-meta">{{ tag[0] }}</h2>
+    <h2 class="post-tag">{{ tag[0] }}</h2>
     {% for post in tag[1] %}
     <ul class="post-list">
       <h3>
