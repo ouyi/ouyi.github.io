@@ -2,8 +2,8 @@
 layout: post
 title:  "Hadoop streaming broken pipe issue"
 date:   2015-12-06 19:11:04 +0000
-categories: Hadoop
-tags: BigData, Hadoop, streaming
+category: Hadoop
+tags: [big data, hadoop, streaming]
 ---
 
 I was working on a simple tool (a distributed `grep`) using Hadoop streaming in Bash. Everything works fine when testing locally with the standard approach:
