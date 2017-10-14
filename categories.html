@@ -1,0 +1,26 @@
+---
+layout: default
+permalink: /categories/
+title: Categories
+---
+
+<div class="home" id="categories">
+
+  <h1 class="page-heading">Categories</h1>
+
+{% for category in site.categories %}
+  <div id="category">
+    {% capture category_name %}{{ category | first }}{% endcapture %}
+    <div id="{{ category_name | slugify }}">
+    <h2 class="post-meta">{{ category_name }}</h2>
+    {% for post in site.categories[category_name] %}
+    <ul class="post-list">
+      <h3>
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+      </h3>
+    </ul>
+    {% endfor %}
+    </div>
+  </div>
+{% endfor %}
+</div>
