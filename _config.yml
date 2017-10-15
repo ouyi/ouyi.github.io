@@ -21,6 +21,12 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ouyi.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 author: Yi Ou
 logo: /assets/favicon.png
+social:
+  name: Yi Ou
+  links:
+    - https://github.com/ouyi
+    - https://linkedin.com/in/ouyi-cs
+    - https://www.xing.com/profile/Yi_Ou3
 
 social_media:
   - { media_name: GitHub, fa_icon: fa-github-square, profile_link: "https://github.com/ouyi" }
