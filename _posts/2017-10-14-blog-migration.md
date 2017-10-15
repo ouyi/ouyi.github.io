@@ -15,6 +15,8 @@ blogger.com => Theme => Edit HTML
     </b:if>
 ```
 
+[Move a site with URL changes](https://support.google.com/webmasters/answer/6033049)
+
 [Handling legitimate cross-domain content duplication](https://webmasters.googleblog.com/2009/12/handling-legitimate-cross-domain.html)
 
 [301 redirect for specific post in Blogger blog?](https://webapps.stackexchange.com/questions/6140/301-redirect-for-specific-post-in-blogger-blog)
