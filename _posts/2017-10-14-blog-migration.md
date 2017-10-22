@@ -23,3 +23,6 @@ blogger.com => Theme => Edit HTML
 
 [301 redirect for specific post in Blogger blog?](https://webapps.stackexchange.com/questions/6140/301-redirect-for-specific-post-in-blogger-blog)
 
+[Host images](https://stackoverflow.com/questions/18360714/official-image-host-for-github-projects)
+
+[Travis CI](https://github.com/ouyi/ouyi.github.io/blob/master/.travis.yml)
