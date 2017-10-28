@@ -2,8 +2,8 @@
 layout: post
 title:  "我对微服务(Microservices)的理解"
 date:   2017-09-17 10:27:07 +0000
-category: Architecture
-tags: [architecture]
+category: architecture
+tags: [Architecture]
 lang: zh
 ref: microservices
 ---
