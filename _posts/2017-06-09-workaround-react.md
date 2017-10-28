@@ -3,7 +3,7 @@ layout: post
 title:  "Workaround React deprecation warnings"
 date:   2017-06-09 07:25:20 +0000
 category: Web
-tags: [JavaScript, reactjs, npm]
+tags: [reactjs, npm]
 ---
 
 Recently I am working with

@@ -2,8 +2,8 @@
 layout: post
 title:  "Downgrade RPMs using Ansible"
 date:   2015-12-14 20:48:20 +0000
-category: cicd
-tags: [Ansible, CI/CD]
+category: "CI/CD"
+tags: [ansible, cicd]
 ---
 
 In a real-world scenario, if a newly deployed RPM does not behave as expected,
