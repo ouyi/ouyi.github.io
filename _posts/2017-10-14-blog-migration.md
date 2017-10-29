@@ -19,6 +19,7 @@ http and https
 
 blogspot templating language vs. Jekyll and liquid
 
+google and bing indexing speed
 
 [Move a site with URL changes](https://support.google.com/webmasters/answer/6033049)
 
