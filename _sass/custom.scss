@@ -17,3 +17,34 @@
     color: $background-color;
   }
 }
+.post-link {
+  display: block;
+  @include relative-font-size(1.125);
+}
+.post-content {
+  margin-bottom: $spacing-unit;
+
+  h2 {
+    @include relative-font-size(1.75);
+
+    @include media-query($on-laptop) {
+      @include relative-font-size(1.625);
+    }
+  }
+
+  h3 {
+    @include relative-font-size(1.375);
+
+    @include media-query($on-laptop) {
+      @include relative-font-size(1.25);
+    }
+  }
+
+  h4 {
+    @include relative-font-size(1.125);
+
+    @include media-query($on-laptop) {
+      @include relative-font-size(1.1);
+    }
+  }
+}
