@@ -15,6 +15,11 @@ blogger.com => Theme => Edit HTML
     </b:if>
 ```
 
+http and https
+
+blogspot templating language vs. Jekyll and liquid
+
+
 [Move a site with URL changes](https://support.google.com/webmasters/answer/6033049)
 
 [Handling legitimate cross-domain content duplication](https://webmasters.googleblog.com/2009/12/handling-legitimate-cross-domain.html)
