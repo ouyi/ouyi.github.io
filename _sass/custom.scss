@@ -57,3 +57,17 @@
     }
   }
 }
+.prev-next {
+  display: block;
+  overflow: hidden;
+  @include relative-font-size(0.8);
+}
+.prev-next a {
+  display: block;
+  width: 50%;
+  float: left;
+  margin: 1em 0;
+}
+.prev-next .next {
+  text-align: right;
+}
