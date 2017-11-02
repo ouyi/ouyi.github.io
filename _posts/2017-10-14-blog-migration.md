@@ -21,6 +21,8 @@ blogspot templating language vs. Jekyll and liquid
 
 google and bing indexing speed
 
+[Links to prev and next posts](http://david.elbe.me/jekyll/2015/06/20/how-to-link-to-next-and-previous-post-with-jekyll.html)
+
 [Move a site with URL changes](https://support.google.com/webmasters/answer/6033049)
 
 [Handling legitimate cross-domain content duplication](https://webmasters.googleblog.com/2009/12/handling-legitimate-cross-domain.html)
