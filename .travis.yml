@@ -3,4 +3,4 @@ cache: bundler
 install:
   - bundle install
 script:
-  - JEKYLL_ENV=production bundle exec jekyll build --safe
+  - bundle exec jekyll build --safe
