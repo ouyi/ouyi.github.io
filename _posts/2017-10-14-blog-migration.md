@@ -2,8 +2,8 @@
 layout: post
 title:  "Migrating from Blogspot to Github Pages"
 date:   2017-10-14 07:56:11 +0000
-category: Misc
-tags: [blogging]
+category: post
+tags: [Blogging]
 ---
 
 blogger.com => Theme => Edit HTML 
@@ -20,6 +20,8 @@ http and https
 blogspot templating language vs. Jekyll and liquid
 
 google and bing indexing speed
+
+categories and tags: category => post, tags => tags page (indexing by tags)
 
 [Links to prev and next posts](http://david.elbe.me/jekyll/2015/06/20/how-to-link-to-next-and-previous-post-with-jekyll.html)
 
