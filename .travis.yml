@@ -4,4 +4,4 @@ install:
   - bundle install
 script:
   - bundle exec jekyll build --safe
-  - LC_ALL="en_US.UTF-8" bundle exec htmlproofer ./_site --disable-external
+  - bundle exec htmlproofer ./_site --disable-external
