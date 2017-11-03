@@ -2,11 +2,12 @@
 layout: post
 title:  "A short introduction to Avro binary encoding"
 date:   2016-10-13 18:50:42 +0000
+category: post
 tags: [Avro]
 ---
 
 When developing applications processing Avro data, a basic understanding of Avro schema and Avro binary encoding is helpful.
-I disscussed a [small topic on Avro schema here](https://ouyi-cs.blogspot.com/2016/02/avro-schema-field-name-and-type-name.html).
+I disscussed a [small topic on Avro schema here]({{ site.baseurl }}{% post_url 2016-02-08-avro-schema %}).
 The focus of this post is [Avro binary encoding](https://avro.apache.org/docs/1.7.7/spec.html#binary_encoding).
 
 ## Avro file structure
@@ -68,7 +69,7 @@ $ java -jar avro-tools-1.7.7.jar fromjson --schema-file Person.avsc person.json 
 
 On Linux, the Avro binary file can be viewed with `xxd`:
 
-{% highlight bash %}
+```
 $ xxd person.avro
 0000000: 4f62 6a01 0416 6176 726f 2e73 6368 656d  Obj...avro.schem
 0000010: 6198 017b 2274 7970 6522 3a22 7265 636f  a..{"type":"reco
@@ -80,6 +81,6 @@ $ xxd person.avro
 0000070: fa4b c7d2 52a1 aa57 92cb cdfd 20d8 c341  .K..R..W.... ..A
 0000080: 0416 084a 6f68 6e0a 416c 6963 65fa 4bc7  ...John.Alice.K.
 0000090: d252 a1aa 5792 cbcd fd20 d8c3 41         .R..W.... ..A
-{% endhighlight %}
+```
 
 The string area on the right-hand side reveals two key-value pairs with keys being `avro.schema` and `avro.codec`.
