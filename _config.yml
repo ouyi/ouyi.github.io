@@ -65,3 +65,5 @@ baidu_autopush: true
 
 disqus:
     shortname: memory-spills
+
+paginate: 8

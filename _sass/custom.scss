@@ -60,7 +60,7 @@
 .prev-next {
   display: block;
   overflow: hidden;
-  @include relative-font-size(0.8);
+  @include relative-font-size(0.9);
 }
 .prev-next a {
   display: block;
@@ -70,4 +70,9 @@
 }
 .prev-next .next {
   text-align: right;
+}
+.pagination {
+  display: block;
+  overflow: hidden;
+  @include relative-font-size(0.9);
 }
