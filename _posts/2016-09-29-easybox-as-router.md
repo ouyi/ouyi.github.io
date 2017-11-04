@@ -22,7 +22,7 @@ I could not find a good how-to article on this in English, so I think maybe I ca
 
 5. Select Open Mode, click Next (or Continue), go to DATA, then click the WAN menu.
 
-    <img src="https://user-images.githubusercontent.com/15970333/32409768-84c92cc8-c1b2-11e7-9309-428c99da8cac.png" >
+    <img src="https://user-images.githubusercontent.com/15970333/32409768-84c92cc8-c1b2-11e7-9309-428c99da8cac.png" alt="screen shot 1">
 
 6. Enter now at WAN1:
 
@@ -31,7 +31,7 @@ I could not find a good how-to article on this in English, so I think maybe I ca
     * DHCP client: checkbox selected
     * 802.1Q (1p/VLAN ID) tagging to 0
 
-    <img src="https://user-images.githubusercontent.com/15970333/32409829-b7706960-c1b3-11e7-9ad9-f287338ca0cf.png" >
+    <img src="https://user-images.githubusercontent.com/15970333/32409829-b7706960-c1b3-11e7-9ad9-f287338ca0cf.png" alt="screen shot 2">
 
 7. Unplug EasyBox and plug it back in.
 
@@ -43,11 +43,11 @@ After that I also did the following steps:
 
 1. Go to Password Settings under EXTRAS and change username and password
 
-    <img src="https://user-images.githubusercontent.com/15970333/32409836-0041bb6c-c1b4-11e7-829a-b589295449be.png" >
+    <img src="https://user-images.githubusercontent.com/15970333/32409836-0041bb6c-c1b4-11e7-829a-b589295449be.png" alt="screen shot 3">
 
 2. Setup wifi
 
-    <img src="https://user-images.githubusercontent.com/15970333/32409844-4d9060bc-c1b4-11e7-9ce5-02c96a076fe7.png" >
+    <img src="https://user-images.githubusercontent.com/15970333/32409844-4d9060bc-c1b4-11e7-9ce5-02c96a076fe7.png" alt="screen shot 4">
 
 3. Disconnect the PC from the LAN port of EasyBox and connect to the SSID set in the previous step via wifi.
 
