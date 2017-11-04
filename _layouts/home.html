@@ -17,6 +17,7 @@ layout: default
         <h2>
           <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
         </h2>
+        {{ post.excerpt | strip_html }}<a href="{{ post.url | relative_url }}">&hellip; read more &raquo;</a>
       </li>
     {% endfor %}
   </ul>

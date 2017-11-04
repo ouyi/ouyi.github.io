@@ -6,6 +6,8 @@ category: java
 tags: [JDBI, PostgreSQL]
 ---
 
+I had a problem when trying to bind a Java array to an IN clause with JDBI. Here are the solutions I found working.
+
 ## The problem
 
 I was hoping the following code snipet would work with JDBI. It truns out to be not working.
@@ -19,12 +21,14 @@ try (Handle handle = dbi.open()) {
 }
 {% endhighlight %}
 
-## The solution
-
 The reason, I guess, is that the array type is not equivalent to a table
 expression, which is conceptually a set. Furthermore, for the JDBI array
 binding to work, the parameter value to be bound needs to be of the type
-`java.sql.Array`. Therefore, the following code works.
+`java.sql.Array`.
+
+## The solutions
+
+Following the above discussions, it is easier to understand why the following code works.
 
 {% highlight java %}
 try (Handle handle = dbi.open()) {
