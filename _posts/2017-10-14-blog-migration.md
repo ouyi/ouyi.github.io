@@ -33,6 +33,8 @@ customize minima css
     [not working](https://help.github.com/articles/customizing-css-and-html-in-your-jekyll-theme/)
 
 working:
+    [minima doc](https://github.com/jekyll/minima)
+
     cat _sass/minima.scss
     ...
     // Import partials.
