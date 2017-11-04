@@ -16,7 +16,7 @@
 title: Memory Spills
 #email: yi DOT ou AT gmx DOT de
 description: >- # this means to ignore newlines until "baseurl:"
-  Researcher and engineer. Loves simple design and clean code.
+  Another geek blog on software engineering, data processing, and cloud computing.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ouyi.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 author: Yi Ou
