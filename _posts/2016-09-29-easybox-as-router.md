@@ -53,8 +53,8 @@ After that I also did the following steps:
 
 ## References (in German)
 
-1. [http://www.ip-phone-forum.de/showthread.php?t=222367](http://www.ip-phone-forum.de/showthread.php?t=222367)
+1. [How-to article at ip phone forum](https://www.ip-phone-forum.de/showthread.php?t=222367)
 
-2. [https://thomasheinz.net/EasyBox-802-als-dhcp-client-internet-uber-lan1/](https://thomasheinz.net/EasyBox-802-als-dhcp-client-internet-uber-lan1/)
+2. [EasyBox 802 als DHCP-Client](https://thomasheinz.net/EasyBox-802-als-dhcp-client-internet-uber-lan1/)
 
 3. [EasyBox 802 user manual](https://dsl.vodafone.de/hilfe/files/vfksc/pdf/VF_EasyBox_802_CD-MANUAL_Release_update_April_4_2009.pdf)
