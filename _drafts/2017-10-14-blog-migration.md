@@ -6,6 +6,12 @@ category: post
 tags: [Blogging]
 ---
 
+## pagination
+
+```
+Pagination: Pagination is enabled, but I couldn't find an index.html page to use as the pagination template. Skipping pagination.
+```
+
 blogger.com => Theme => Edit HTML 
 
 ```
@@ -44,6 +50,8 @@ working:
       "minima/syntax-highlighting",
       "custom"
     ;
+
+[Create "read more" links](http://www.seanbuscay.com/blog/jekyll-teaser-pager-and-read-more/)
 
 [Links to prev and next posts](http://david.elbe.me/jekyll/2015/06/20/how-to-link-to-next-and-previous-post-with-jekyll.html)
 
