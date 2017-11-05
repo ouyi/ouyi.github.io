@@ -57,17 +57,17 @@
     }
   }
 }
-.pagination {
+.prev-next {
   display: block;
   overflow: hidden;
   @include relative-font-size(0.9);
 }
-.pagination .half {
+.prev-next .half {
   display: block;
   width: 50%;
   float: left;
   margin: 1em 0;
 }
-.pagination .next {
+.prev-next .next {
   text-align: right;
 }
