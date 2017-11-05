@@ -1,0 +1,10 @@
+<div class="prev-next">
+  {% if include.prev_url %}
+    <a class="half prev" href="{{ include.prev_url }}">&laquo; {{ include.prev_text }}</a>
+  {% else %}
+    <a class="half prev"></a>
+  {% endif %}
+  {% if include.next_url %}
+    <a class="half next" href="{{ include.next_url }}">{{ include.next_text }} &raquo;</a>
+  {% endif %}
+</div>
