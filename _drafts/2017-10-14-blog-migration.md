@@ -12,6 +12,8 @@ tags: [Blogging]
 Pagination: Pagination is enabled, but I couldn't find an index.html page to use as the pagination template. Skipping pagination.
 ```
 
+Template engines generally provide no support of object assignment? Not easy to extract the pagination logic.
+
 blogger.com => Theme => Edit HTML 
 
 ```
