@@ -57,22 +57,17 @@
     }
   }
 }
-.prev-next {
+.pagination {
   display: block;
   overflow: hidden;
   @include relative-font-size(0.9);
 }
-.prev-next a {
+.pagination .half {
   display: block;
   width: 50%;
   float: left;
   margin: 1em 0;
 }
-.prev-next .next {
+.pagination .next {
   text-align: right;
-}
-.pagination {
-  display: block;
-  overflow: hidden;
-  @include relative-font-size(0.9);
 }
