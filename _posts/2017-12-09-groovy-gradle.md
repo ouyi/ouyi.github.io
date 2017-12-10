@@ -142,10 +142,10 @@ The documentation says:
 >Each jar or war object has a `manifest` property with a separate instance of Manifest.
 
 This explains the `manifest {}` construct. Following the [documentation of
-`Manifest`](https://docs.gradle.org/current/javadoc/org/gradle/api/java/archives/Manifest.html),
+Manifest](https://docs.gradle.org/current/javadoc/org/gradle/api/java/archives/Manifest.html),
 we can find the method signature `Manifest attributes(Map<String,?>
 attributes)`, which explains the method call with named parameters
-`attributes(key1:value1,  key2, value2)`.
+`attributes(key1:value1, key2:value2)`.
 
 ### Custom tasks
 
