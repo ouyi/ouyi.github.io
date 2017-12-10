@@ -10,9 +10,8 @@ Most of the time, Gradle works just fine for me, but I had difficulties
 understanding the build script and the Gradle DSL documentation. This post
 documents the points which helped me to understand them.
 
-To understand Gradle, we first need to understand a bit of Groovy, because Gradle is based on Groovy.
-
 ## Groovy basics 
+To understand Gradle, we first need to understand a bit of Groovy, because Gradle is based on Groovy.
 
 ### Closure
 
@@ -169,6 +168,6 @@ and
 
 It turns out that Gradle uses some advanced meta programming features of Groovy
 (compile-time metaprogramming) to transform the `myTask()` construct to the
-`name` parameter.
-
-To be honest, this is the part of Gradle that I do not like, although it seems to be really cool ;)
+`name` parameter. To be honest, this is the part of Gradle that I do not like
+(too many tricks and syntax sugars may not be healthy), although it seems to be
+really cool ;)
