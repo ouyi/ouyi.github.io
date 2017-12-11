@@ -169,5 +169,8 @@ and
 It turns out that Gradle uses some advanced meta programming features of Groovy
 (compile-time metaprogramming) to transform the `myTask()` construct to the
 `name` parameter. To be honest, this is the part of Gradle that I do not like
-(too many tricks and syntax sugars may not be healthy), although it seems to be
-really cool ;)
+because it seems to be too tricky to implement those syntax sugars (and too
+much sugar may not be healthy). Afterall, Gradle is just a build tool, which
+shall be easy to understand, to use, and to extend. Overall I find Gradle
+really cool, because I think having humans writing XML files (as with Maven or
+Spring) is a terrible idea, which are supposed to be processed by machines ;)
