@@ -16,7 +16,7 @@ Blogspot, as long as one is comfortable with Git and Markdown. More specifically
 I like Github Pages because:
 
 1. Everything of the blog is version controlled, including posts, themes, and settings
-2. Static site generators (I chose Jekyll) allow customisations of almost everything
+2. Static site generators (I chose Jekyll) allow customizations of almost everything
 3. Markdown produces much cleaner HTML pages than those produced by a WYSIWYG editor
 
 With Blogspot I already had some of my posts in Markdown and in a Git
@@ -125,13 +125,13 @@ After a few weeks, search engines will remove the Blogspot version from their in
 - [Handling legitimate cross-domain content duplication](https://webmasters.googleblog.com/2009/12/handling-legitimate-cross-domain.html)
 - [301 redirect for specific post in Blogger blog?](https://webapps.stackexchange.com/questions/6140/301-redirect-for-specific-post-in-blogger-blog)
 
-## Customisations
+## Customizations
 
 While Jekyll supports a lot of themes which work quite well out of the box, it
-allows customisations of almost everything of the site. A theme is a pre-defined
+allows customizations of almost everything of the site. A theme is a pre-defined
 set of styles, templates, and template variables. My site is based on the default
 Jekyll theme: minima. The command `bundle show minima` can be used to find the location
-where the theme artefacts are installed, e.g.:
+where the theme artifacts are installed, e.g.:
 
 ```
 [ouyi.github.io]$ tree $(bundle show minima)
@@ -165,7 +165,7 @@ where the theme artefacts are installed, e.g.:
 5 directories, 20 files
 ```
 
-To override the theme defaults, simply copy the related file from the theme installation location to your project, under the same folder. For example, the following customisation adds feed link in the header:
+To override the theme defaults, simply copy the related file from the theme installation location to your project, under the same folder. For example, the following customization adds feed link in the header:
 
 ```
 [ouyi.github.io]$ diff .bundle/gems/minima-2.1.1/_includes/header.html _includes/header.html
@@ -218,7 +218,7 @@ Pagination: Pagination is enabled, but I couldn't find an index.html page to use
 
 ## Categories and tags
 
-Categories and tags are two largely overlapping concepts in Jekyll. From a product perspective, I doubt the necessity of having both implemented, which do not provide added value instead of confusing the users. The only difference seems to be that categories become a part of the post URL. That means, a post having the `category: hadoop` in the front matter would have a URL like `https://ouyi.github.io/hadoop/2017/10/08/hbase.html`, where `hadoop` is the category. That also means, posts published on the same date (or in the same month or year) will be put into different folders, if they are of different categories. I do not like that. One could also customise the permalink pattern in Jekyll to remove the categories from the URL. But I chose to set the categories of all posts to `post`, e.g.:
+Categories and tags are two largely overlapping concepts in Jekyll. From a product perspective, I doubt the necessity of having both implemented, which do not provide added value instead of confusing the users. The only difference seems to be that categories become a part of the post URL. That means, a post having the `category: hadoop` in the front matter would have a URL like `https://ouyi.github.io/hadoop/2017/10/08/hbase.html`, where `hadoop` is the category. That also means, posts published on the same date (or in the same month or year) will be put into different folders, if they are of different categories. I do not like that. One could also customize the permalink pattern in Jekyll to remove the categories from the URL. But I chose to set the categories of all posts to `post`, e.g.:
 
 ```
 ouyi.github.io]$ head -7 _posts/2017-12-19-java-mail.md
