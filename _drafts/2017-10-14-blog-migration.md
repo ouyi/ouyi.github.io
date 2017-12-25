@@ -10,18 +10,20 @@ tags: [Blogging, Jekyll]
 * TOC
 {:toc}
 
-Recently I migrated [my blog](https://ouyi.github.io) from Blogspot to [Github Pages](https://github.com/ouyi/ouyi.github.io). It took a while, but I am glad I
-did it, because blogging with Github Pages is much more enjoyable than with
-Blogspot, as long as one is comfortable with Git and Markdown. More specifically,
-I like Github Pages because:
+Recently I migrated [my blog](https://ouyi.github.io) from Blogspot to [Github
+Pages](https://github.com/ouyi/ouyi.github.io). It took a while, but I am glad
+I did it, because blogging with Github Pages is much more enjoyable than with
+Blogspot, as long as one is comfortable with Git and Markdown. More
+specifically, I like Github Pages because:
 
 1. Everything of the blog is version controlled, including posts, themes, and settings
 2. Static site generators (I chose Jekyll) allow customizations of almost everything
 3. Markdown produces much cleaner HTML pages than those produced by a WYSIWYG editor
 
 With Blogspot I already had some of my posts in Markdown and in a Git
-repository. But to publish a post there, I had to convert the post from Markdown
-to HTML with some tools, and then paste the result page into the Blogspot post editor Web UI.
+repository. But to publish a post there, I had to convert the post from
+Markdown to HTML with some tools, and then paste the result page into the
+Blogspot post editor Web UI.
 
 Now with Github Pages and Jekyll, the workflow of blogging is like this:
 
@@ -36,11 +38,12 @@ that it might be helpful for the readers.
 
 ## Travis CI
 
-The downside of having Github Pages building everything automatically behind the
-scenes is that if there is an issue, e.g., a Markdown syntax error, you would not
-even notice it. Therefore, I configured it to be built also automatically on
-Travis CI, which requires just a config file (`.travis.yml`) [in the root folder
-of the project](https://github.com/ouyi/ouyi.github.io/blob/master/.travis.yml):
+The downside of having Github Pages building everything automatically behind
+the scenes is that if there is an issue, e.g., a Markdown syntax error, you
+would not even notice it. Therefore, I configured it to be built also
+automatically on Travis CI, which requires just a config file (`.travis.yml`)
+[in the root folder of the
+project](https://github.com/ouyi/ouyi.github.io/blob/master/.travis.yml):
 
 {% highlight yml %}
 language: ruby
@@ -54,45 +57,54 @@ script:
 
 <!--_-->
 
-This instructs Travis to generate the site (stored in the `_site` folder) and run
-htmlproofer on it while ignoring the linked external sites. For all this to work,
-of course, one has to connect the Github project in Travis CI, which is out of scope
-of this post (and Github Pages also works without Travis CI).
+This instructs Travis to generate the site (stored in the `_site` folder) and
+run htmlproofer on it while ignoring the linked external sites. For all this to
+work, of course, one has to connect the Github project in Travis CI, which is
+out of scope of this post (and Github Pages also works without Travis CI).
 
 When all this has been set up, one got email notifications from Travis
 on build failures. One got also a small build passing (or failing) badge:
 
 [![Build Status](https://travis-ci.org/ouyi/ouyi.github.io.svg?branch=master)](https://travis-ci.org/ouyi/ouyi.github.io)
 
-The command htmlproofer is provided by the gem `html-proofer`. In addition, to make sure the build on Travis has the same dependencies as the build on Github, specify `gem 'github-pages', group: :jekyll_plugins` in the [Gemfile](https://github.com/ouyi/ouyi.github.io/blob/master/Gemfile). Before the changes are pushed, one can always run `bundle exec jekyll serve --port 8080 --host 0.0.0.0 --drafts` and open `http://localhost:8080` with the browser to proof read the generated site.
+The command htmlproofer is provided by the gem `html-proofer`. In addition, to
+make sure the build on Travis has the same dependencies as the build on Github,
+specify `gem 'github-pages', group: :jekyll_plugins` in the
+[Gemfile](https://github.com/ouyi/ouyi.github.io/blob/master/Gemfile). Before
+the changes are pushed, one can always run `bundle exec jekyll serve --port
+8080 --host 0.0.0.0 --drafts` and open `http://localhost:8080` with the browser
+to proof read the generated site.
 
 ## Hosting images
 
 I mentioned earlier: "everything of the blog is version controlled". This does
-NOT apply to images, because I do not think including images in a Git repository is a
-great idea. But we need to host the images somewhere, e.g., S3, CDN, or any other
-hosting services. The solution I chose was found on Statck Overflow. It allows me
-to host my images on Github, based on a [secret Github feature](https://stackoverflow.com/a/20959426/8886552).
+NOT apply to images, because I do not think including images in a Git
+repository is a great idea. But we need to host the images somewhere, e.g., S3,
+CDN, or any other hosting services. The solution I chose was found on Statck
+Overflow. It allows me to host my images on Github, based on a [secret Github
+feature](https://stackoverflow.com/a/20959426/8886552).
 
 Once I got the URL to the image, I can add the image using standard Markdown
-syntax (i.e., `![alt text](image_url "title text")`) or the HTML `img` tag (yes,
-in a Markdown file), e.g.:
+syntax (i.e., `![alt text](image_url "title text")`) or the HTML `img` tag
+(yes, in a Markdown file), e.g.:
+
 {% highlight html %}
 <img src="https://user-images.githubusercontent.com/15970333/32409768-84c92cc8-c1b2-11e7-9309-428c99da8cac.png" alt="screen shot 1">
 {% endhighlight %}
 
 ## Redirects and canonical URL tags
 
-After a post has been migrated, there are two versions of it on the Web: the old
-one on Blogspot and the new one on Github. Simply removing the old version would
-mean a bad user experience (they might have bookmarked the old version) and would
-hurt SEO. Ideally, we would like to:
+After a post has been migrated, there are two versions of it on the Web: the
+old one on Blogspot and the new one on Github. Simply removing the old version
+would mean a bad user experience (they might have bookmarked the old version)
+and would hurt SEO. Ideally, we would like to:
 
 1. redirect the browser visiting the old version to the new version, and
 2. tell search engines that the old version is obsolete and the new version is
 the one to index.
 
-After some searches, I came up with this kind of Blogspot template code snippet:
+After some searches, I came up with this kind of Blogspot template code
+snippet:
 
 {% highlight xml %}
 <head>
@@ -119,9 +131,26 @@ After some searches, I came up with this kind of Blogspot template code snippet:
 </head>
 {% endhighlight %}
 
-The code snippet can be added to the Blogspot HTML template (in blogger.com Web UI, click "Theme", then "Edit HTML"), directly after the opening `<head>` tag. For each migrated post, it will generate two tags (link and meta) in the head section of the Blogspot version. The meta tag with `http-equiv='refresh'` takes care of redirecting the browser to the Github version. The link tag tells search engines that the Github version is the one (and the only one) to be indexed. Note also that I had to take care of both the `http` and `https` URLs for the Blogspot version. The syntax seems to be overwhelmingly verbose (working with Jekyll and Liquid, its template system, is way easier). If you find a cleaner or shorter way of doing this, please let me know. More details about the Blogspot template syntax [can be found here](https://support.google.com/blogger/answer/46995?hl=en&ref_topic=6321969).
+The code snippet can be added to the Blogspot HTML template (in blogger.com Web
+UI, click "Theme", then "Edit HTML"), directly after the opening `<head>` tag.
+For each migrated post, it will generate two tags (link and meta) in the head
+section of the Blogspot version. The meta tag with `http-equiv='refresh'` takes
+care of redirecting the browser to the Github version. The link tag tells
+search engines that the Github version is the one (and the only one) to be
+indexed. Note also that I had to take care of both the `http` and `https` URLs
+for the Blogspot version.
 
-After a few weeks, search engines will remove the Blogspot version from their indexed pages and index the Github one. The indexing process is quite out of our control. One has to be patient. From what I observed, Google seems to have picked up the posts on the new site faster than Bing and Yahoo. The following are a couple of articles related to "page URL changes" I found useful:
+The syntax seems to be overwhelmingly verbose (working with Jekyll and Liquid,
+its template system, is way easier). If you find a cleaner or shorter way of
+doing this, please let me know. More details about the Blogspot template syntax
+[can be found
+here](https://support.google.com/blogger/answer/46995?hl=en&ref_topic=6321969).
+
+After a few weeks, search engines will remove the Blogspot version from their
+indexed pages and index the Github one. The indexing process is quite out of
+our control. One has to be patient. From what I observed, Google seems to have
+picked up the posts on the new site faster than Bing and Yahoo. The following
+are a couple of articles related to "page URL changes" I found useful:
 
 - [Move a site with URL changes](https://support.google.com/webmasters/answer/6033049)
 - [Handling legitimate cross-domain content duplication](https://webmasters.googleblog.com/2009/12/handling-legitimate-cross-domain.html)
@@ -130,10 +159,10 @@ After a few weeks, search engines will remove the Blogspot version from their in
 ## Customizations
 
 While Jekyll supports a lot of themes which work quite well out of the box, it
-allows customizations of almost everything of the site. A theme is a pre-defined
-set of styles, templates, and template variables. My site is based on the default
-Jekyll theme: minima. The command `bundle show minima` can be used to find the location
-where the theme artifacts are installed, e.g.:
+allows customizations of almost everything of the site. A theme is a
+pre-defined set of styles, templates, and template variables. My site is based
+on the default Jekyll theme: minima. The command `bundle show minima` can be
+used to find the location where the theme artifacts are installed, e.g.:
 
 ```
 [ouyi.github.io]$ tree $(bundle show minima)
@@ -167,7 +196,9 @@ where the theme artifacts are installed, e.g.:
 5 directories, 20 files
 ```
 
-To override the theme defaults, simply copy the related file from the theme installation location to your project, under the same folder. For example, the following customization adds feed link in the header:
+To override the theme defaults, simply copy the related file from the theme
+installation location to your project, under the same folder. For example, the
+following customization adds feed link in the header:
 
 ```
 [ouyi.github.io]$ diff .bundle/gems/minima-2.1.1/_includes/header.html _includes/header.html
@@ -175,7 +206,8 @@ To override the theme defaults, simply copy the related file from the theme inst
 >           <a class="page-link" href="{{ "/feed.xml" | relative_url }}"><i class="fa fa-rss" aria-hidden="true"></i></a>
 ```
 
-As another example, to include custom styles, make a copy of the main.scss file and add lines to import from any custom style sheets.
+As another example, to include custom styles, make a copy of the main.scss file
+and add lines to import from any custom style sheets.
 
 ```
 [ouyi.github.io]$ diff .bundle/gems/minima-2.1.1/assets/main.scss assets/main.scss
@@ -186,7 +218,8 @@ custom.scss
 ```
 
 By default, bundler installs gems in a central location shared by all ruby
-projects. To change that, set `BUNDLE_DISABLE_SHARED_GEMS` to true in the bundler config file, e.g.:
+projects. To change that, set `BUNDLE_DISABLE_SHARED_GEMS` to true in the
+bundler config file, e.g.:
 
 ```
 cat .bundle/config
@@ -196,23 +229,40 @@ BUNDLE_DISABLE_SHARED_GEMS: "true"
 
 ## Pagination and links to the previous and next posts
 
-By default, the minima's home page shows the complete list of posts, which is not nice. What I would prefer are:
+By default, the minima's home page shows the complete list of posts, which is
+not nice. What I would prefer are:
 
 1. split the home page into multiple pages, if that list become long
 2. control the number of posts displayed per page
 3. link from each page to the previous and next pages
 
-It turns out that Jekyll already has some support for [pagination](https://jekyllrb.com/docs/pagination/). To enable it, one has to add a line to the `_config.yml` file, specifying the number of items per page, e.g.: `paginator: 8`. With pagination enabled, Jekyll populates a `paginator` liquid object. [This is my changes to the home layout](https://github.com/ouyi/ouyi.github.io/compare/e270fd4...ef26966#diff-891082c144b1c9ddb0047d67a7b4181f) to implement pagination for the home page, making use of the paginator object.
+It turns out that Jekyll already has some support for
+[pagination](https://jekyllrb.com/docs/pagination/). To enable it, one has to
+add a line to the `_config.yml` file, specifying the number of items per page,
+e.g.: `paginator: 8`. With pagination enabled, Jekyll populates a `paginator`
+liquid object. [This is my changes to the home
+layout](https://github.com/ouyi/ouyi.github.io/compare/e270fd4...ef26966#diff-891082c144b1c9ddb0047d67a7b4181f)
+to implement pagination for the home page, making use of the paginator object.
 
-Basically, instead of iterating over `site.posts`, one has to loop over `paginator.posts`. In addition to the post title, I also show a excerpt of the post content for preview `{{ post.excerpt | strip_html | truncatewords: 40, "" }}` and provides a `read more` button linking to the complete post content.
+Basically, instead of iterating over `site.posts`, one has to loop over
+`paginator.posts`. In addition to the post title, I also show a excerpt of the
+post content for preview `{{ post.excerpt | strip_html | truncatewords: 40, ""
+}}` and provides a `read more` button linking to the complete post content.
 
-The links to the previous and next posts are implemented as a macro in the [prev_next.html file](https://github.com/ouyi/ouyi.github.io/blob/master/_includes/prev_next.html). The macro requires four named parameters: `prev_url`, `prev_text`, `next_url`, and `next_text`. This line includes the macro and passes the required parameters:
+The links to the previous and next posts are implemented as a macro in the
+[prev_next.html
+file](https://github.com/ouyi/ouyi.github.io/blob/master/_includes/prev_next.html).
+The macro requires four named parameters: `prev_url`, `prev_text`, `next_url`,
+and `next_text`. This line includes the macro and passes the required
+parameters:
 
 ```
 include prev_next.html prev_url=paginator.previous_page_path prev_text='Previous page' next_url=paginator.next_page_path next_text='Next page'
 ```
 
-Note that pagination only works with the index.html file, which references the home layout file. I also had to rename the file index.md (default) to index.html to fix this error:  
+Note that pagination only works with the index.html file, which references the
+home layout file. I also had to rename the file index.md (default) to
+index.html to fix this error:
 
 ```
 Pagination: Pagination is enabled, but I couldn't find an index.html page to use as the pagination template. Skipping pagination.
@@ -220,7 +270,17 @@ Pagination: Pagination is enabled, but I couldn't find an index.html page to use
 
 ## Categories and tags
 
-Categories and tags are two largely overlapping concepts in Jekyll. From a product perspective, I doubt the necessity of having both implemented, which do not provide added value instead of confusing the users. The only difference seems to be that categories become a part of the post URL. That means, a post having the `category: hadoop` in the front matter would have a URL like `https://ouyi.github.io/hadoop/2017/10/08/hbase.html`, where `hadoop` is the category. That also means, posts published on the same date (or in the same month or year) will be put into different folders, if they are of different categories. I do not like that. One could also customize the permalink pattern in Jekyll to remove the categories from the URL. But I chose to set the categories of all posts to `post`, e.g.:
+Categories and tags are two largely overlapping concepts in Jekyll. From a
+product perspective, I doubt the necessity of having both implemented, which do
+not provide added value instead of confusing the users. The only difference
+seems to be that categories become a part of the post URL. That means, a post
+having the `category: hadoop` in the front matter would have a URL like
+`https://ouyi.github.io/hadoop/2017/10/08/hbase.html`, where `hadoop` is the
+category. That also means, posts published on the same date (or in the same
+month or year) will be put into different folders, if they are of different
+categories. I do not like that. One could also customize the permalink pattern
+in Jekyll to remove the categories from the URL. But I chose to set the
+categories of all posts to `post`, e.g.:
 
 ```
 ouyi.github.io]$ head -7 _posts/2017-12-19-java-mail.md
@@ -233,4 +293,7 @@ tags: [Java, Spring]
 ---
 ```
 
-This way all posts go to the post category, which is simple and clear. The tags are used to generate a [tags page](/tags/), where all the posts are indexed by tags. The code of the generation can be found [here](https://github.com/ouyi/ouyi.github.io/blob/master/tags.html).
+This way all posts go to the post category, which is simple and clear. The tags
+are used to generate a [tags page](/tags/), where all the posts are indexed by
+tags. The code of the generation can be found
+[here](https://github.com/ouyi/ouyi.github.io/blob/master/tags.html).
