@@ -58,6 +58,8 @@ on build failures. One got also a small build passing (or failing) badge:
 
 [![Build Status](https://travis-ci.org/ouyi/ouyi.github.io.svg?branch=master)](https://travis-ci.org/ouyi/ouyi.github.io)
 
+The command htmlproofer is provided by the gem `html-proofer`. In addition, to make sure the build on Travis has the same dependencies as the build on Github, specify `gem 'github-pages', group: :jekyll_plugins` in the [Gemfile](https://github.com/ouyi/ouyi.github.io/blob/master/Gemfile).
+
 ## Hosting images
 
 I mentioned earlier: "everything of the blog is version controlled". This does
@@ -88,6 +90,13 @@ After some searches, I came up with this kind of Blogspot template code snippet:
 
 {% highlight xml %}
 <head>
+    <b:if cond='data:blog.url == &quot;https://ouyi-cs.blogspot.com/2015/12/hadoop-streaming-broken-pipe-issue.html&quot;'>
+      <link href='https://ouyi.github.io/hadoop/2015/12/06/hadoop-streaming.html' rel='canonical'/>
+      <meta content='0; url=https://ouyi.github.io/hadoop/2015/12/06/hadoop-streaming.html' http-equiv='refresh'/>
+    <b:elseif cond='data:blog.url == &quot;http://ouyi-cs.blogspot.com/2015/12/hadoop-streaming-broken-pipe-issue.html&quot;'/>
+      <link href='https://ouyi.github.io/hadoop/2015/12/06/hadoop-streaming.html' rel='canonical'/>
+      <meta content='0; url=https://ouyi.github.io/hadoop/2015/12/06/hadoop-streaming.html' http-equiv='refresh'/>
+
     <b:elseif cond='data:blog.url == &quot;https://ouyi-cs.blogspot.com/2015/12/downgrade-rpms-using-ansible.html&quot;'/>
       <link href='https://ouyi.github.io/cicd/2015/12/14/ansible-downgrade-rpm.html' rel='canonical'/>
       <meta content='0; url=https://ouyi.github.io/cicd/2015/12/14/ansible-downgrade-rpm.html' http-equiv='refresh'/>
@@ -112,16 +121,66 @@ After a few weeks, search engines will remove the Blogspot version from their in
 - [Handling legitimate cross-domain content duplication](https://webmasters.googleblog.com/2009/12/handling-legitimate-cross-domain.html)
 - [301 redirect for specific post in Blogger blog?](https://webapps.stackexchange.com/questions/6140/301-redirect-for-specific-post-in-blogger-blog)
 
+## Customisations
 
-## pagination
+While Jekyll supports a lot of themes which work quite well out of the box, it
+allows customisations of almost everything of the site. A theme is a pre-defined
+set of styles, templates, and template variables. My site is based on the default
+Jekyll theme: minima. The command `bundle show minima` can be used to find the location
+where the theme artefacts are installed, e.g.:
 
 ```
-Pagination: Pagination is enabled, but I couldn't find an index.html page to use as the pagination template. Skipping pagination.
+[ouyi.github.io]$ tree $(bundle show minima)
+/home/ouyi/ouyi.github.io/.bundle/gems/minima-2.1.1
+|-- LICENSE.txt
+|-- README.md
+|-- _includes
+|   |-- disqus_comments.html
+|   |-- footer.html
+|   |-- google-analytics.html
+|   |-- head.html
+|   |-- header.html
+|   |-- icon-github.html
+|   |-- icon-github.svg
+|   |-- icon-twitter.html
+|   `-- icon-twitter.svg
+|-- _layouts
+|   |-- default.html
+|   |-- home.html
+|   |-- page.html
+|   `-- post.html
+|-- _sass
+|   |-- minima
+|   |   |-- _base.scss
+|   |   |-- _layout.scss
+|   |   `-- _syntax-highlighting.scss
+|   `-- minima.scss
+`-- assets
+    `-- main.scss
+
+5 directories, 20 files
 ```
 
-Template engines generally provide no support of object assignment? Not easy to extract the pagination logic.
+To override the theme defaults, simply copy the related file from the theme installation location to your project, under the same folder. For example, the following customisation adds feed link in the header:
 
-categories and tags: category => post, tags => tags page (indexing by tags)
+```
+[ouyi.github.io]$ diff .bundle/gems/minima-2.1.1/_includes/header.html _includes/header.html
+27a28
+>           <a class="page-link" href="{{ "/feed.xml" | relative_url }}"><i class="fa fa-rss" aria-hidden="true"></i></a>
+```
+
+As another example, to include custom styles, make a copy of the main.scss file and add lines to import from any custom style sheets.
+
+```
+[ouyi.github.io]$ diff .bundle/gems/minima-2.1.1/assets/main.scss assets/main.scss
+5a6
+> @import "custom";
+[ouyi.github.io]$ ls _sass/
+custom.scss
+```
+
+By default, bundler installs gems in a central location shared by all ruby
+projects. To change that, set `BUNDLE_DISABLE_SHARED_GEMS` to true in the bundler config file, e.g.:
 
 ```
 cat .bundle/config
@@ -129,21 +188,35 @@ cat .bundle/config
 BUNDLE_DISABLE_SHARED_GEMS: "true"
 ```
 
-customize minima css
-    [not working](https://help.github.com/articles/customizing-css-and-html-in-your-jekyll-theme/)
+## Pagination and links to the previous and next posts
 
-working:
-    [minima doc](https://github.com/jekyll/minima)
+By default, the minima's home page shows the complete list of posts, which is not nice. What I would prefer are:
 
-    cat _sass/minima.scss
-    ...
-    // Import partials.
-    @import
-      "minima/base",
-      "minima/layout",
-      "minima/syntax-highlighting",
-      "custom"
-    ;
+1. split the home page into multiple pages, if that list become long
+2. control the number of posts displayed per page
+3. link from each page to the previous and next pages
+
+It turns out that Jekyll already has some support for [pagination](https://jekyllrb.com/docs/pagination/). To enable it, one has to add a line to the `_config.yml` file, specifying the number of items per page, e.g.: `paginator: 8`. With pagination enabled, Jekyll populates a `paginator` liquid object. [This is my changes to the home layout](https://github.com/ouyi/ouyi.github.io/compare/e270fd4...ef26966#diff-891082c144b1c9ddb0047d67a7b4181f) to implement pagination for the home page, making use of the paginator object.
+
+Basically, instead of iterating over `site.posts`, one has to loop over `paginator.posts`. In addition to the post title, I also show a excerpt of the post content for preview `{{ post.excerpt | strip_html | truncatewords: 40, "" }}` and provides a `read more` button linking to the complete post content.
+
+The links to the previous and next posts are implemented as a macro in the [prev_next.html file](https://github.com/ouyi/ouyi.github.io/blob/master/_includes/prev_next.html). The macro requires four named parameters: `prev_url`, `prev_text`, `next_url`, and `next_text`. This line includes the macro and passes the required parameters:
+
+```
+include prev_next.html prev_url=paginator.previous_page_path prev_text='Previous page' next_url=paginator.next_page_path next_text='Next page'
+```
+
+Note that pagination only works with the index.html file, which references the home layout file. I also had to rename the file index.md (default) to index.html to fix this error:  
+
+```
+Pagination: Pagination is enabled, but I couldn't find an index.html page to use as the pagination template. Skipping pagination.
+```
+
+
+
+Template engines generally provide no support of object assignment? Not easy to extract the pagination logic.
+
+categories and tags: category => post, tags => tags page (indexing by tags)
 
 [Create "read more" links](http://www.seanbuscay.com/blog/jekyll-teaser-pager-and-read-more/)
 
