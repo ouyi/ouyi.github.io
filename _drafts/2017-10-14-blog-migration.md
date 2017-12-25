@@ -212,12 +212,6 @@ Note that pagination only works with the index.html file, which references the h
 Pagination: Pagination is enabled, but I couldn't find an index.html page to use as the pagination template. Skipping pagination.
 ```
 
-
-
-Template engines generally provide no support of object assignment? Not easy to extract the pagination logic.
+## Categories and tags
 
 categories and tags: category => post, tags => tags page (indexing by tags)
-
-[Create "read more" links](http://www.seanbuscay.com/blog/jekyll-teaser-pager-and-read-more/)
-
-[Links to prev and next posts](http://david.elbe.me/jekyll/2015/06/20/how-to-link-to-next-and-previous-post-with-jekyll.html)
