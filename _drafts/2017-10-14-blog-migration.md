@@ -6,6 +6,10 @@ category: post
 tags: [Blogging, Jekyll]
 ---
 
+**Contents**
+* TOC
+{:toc}
+
 Recently I migrated [my blog](https://ouyi.github.io) from Blogspot to [Github Pages](https://github.com/ouyi/ouyi.github.io). It took a while, but I am glad I
 did it, because blogging with Github Pages is much more enjoyable than with
 Blogspot, as long as one is comfortable with Git and Markdown. More specifically,
@@ -58,7 +62,7 @@ on build failures. One got also a small build passing (or failing) badge:
 
 [![Build Status](https://travis-ci.org/ouyi/ouyi.github.io.svg?branch=master)](https://travis-ci.org/ouyi/ouyi.github.io)
 
-The command htmlproofer is provided by the gem `html-proofer`. In addition, to make sure the build on Travis has the same dependencies as the build on Github, specify `gem 'github-pages', group: :jekyll_plugins` in the [Gemfile](https://github.com/ouyi/ouyi.github.io/blob/master/Gemfile).
+The command htmlproofer is provided by the gem `html-proofer`. In addition, to make sure the build on Travis has the same dependencies as the build on Github, specify `gem 'github-pages', group: :jekyll_plugins` in the [Gemfile](https://github.com/ouyi/ouyi.github.io/blob/master/Gemfile). Before the changes are pushed, one can always run `bundle exec jekyll serve --port 8080 --host 0.0.0.0 --drafts` and open `http://localhost:8080` with the browser to proof read the generated site.
 
 ## Hosting images
 
@@ -75,7 +79,7 @@ in a Markdown file), e.g.:
 <img src="https://user-images.githubusercontent.com/15970333/32409768-84c92cc8-c1b2-11e7-9309-428c99da8cac.png" alt="screen shot 1">
 {% endhighlight %}
 
-# Redirects and canonical URL tags
+## Redirects and canonical URL tags
 
 After a post has been migrated, there are two versions of it on the Web: the old
 one on Blogspot and the new one on Github. Simply removing the old version would
@@ -214,4 +218,17 @@ Pagination: Pagination is enabled, but I couldn't find an index.html page to use
 
 ## Categories and tags
 
-categories and tags: category => post, tags => tags page (indexing by tags)
+Categories and tags are two largely overlapping concepts in Jekyll. From a product perspective, I doubt the necessity of having both implemented, which do not provide added value instead of confusing the users. The only difference seems to be that categories become a part of the post URL. That means, a post having the `category: hadoop` in the front matter would have a URL like `https://ouyi.github.io/hadoop/2017/10/08/hbase.html`, where `hadoop` is the category. That also means, posts published on the same date (or in the same month or year) will be put into different folders, if they are of different categories. I do not like that. One could also customise the permalink pattern in Jekyll to remove the categories from the URL. But I chose to set the categories of all posts to `post`, e.g.:
+
+```
+ouyi.github.io]$ head -7 _posts/2017-12-19-java-mail.md
+---
+layout: post
+title:  "Sending emails from Java applications"
+date:   2017-12-19 22:12:13 +0000
+category: post
+tags: [Java, Spring]
+---
+```
+
+This way all posts go to the post category, which is simple and clear. The tags are used to generate a [tags page](/tags/), where all the posts are indexed by tags. The code of the generation can be found [here](https://github.com/ouyi/ouyi.github.io/blob/master/tags.html).
