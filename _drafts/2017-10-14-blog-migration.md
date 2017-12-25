@@ -49,8 +49,10 @@ install:
   - bundle install
 script:
   - bundle exec jekyll build --safe
-  - bundle exec htmlproofer ./\_site --disable-external
+  - bundle exec htmlproofer ./_site --disable-external
 {% endhighlight %}
+
+<!--_-->
 
 This instructs Travis to generate the site (stored in the `_site` folder) and run
 htmlproofer on it while ignoring the linked external sites. For all this to work,
