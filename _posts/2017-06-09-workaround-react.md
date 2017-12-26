@@ -2,10 +2,14 @@
 layout: post
 title:  "Workaround React deprecation warnings"
 date:   2017-06-09 07:25:20 +0000
+last_modified_at: 2017-12-25 20:06:19
 category: web
 tags: [reactjs, npm]
 ---
 
+**Contents**
+* TOC
+{:toc}
 Recently I am working with
 [react-select](https://github.com/JedWatson/react-select/) and was a bit
 annoyed by these warnings shown in my Chrome developer tools console:

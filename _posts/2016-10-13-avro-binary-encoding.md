@@ -2,10 +2,14 @@
 layout: post
 title:  "A short introduction to Avro binary encoding"
 date:   2016-10-13 18:50:42 +0000
+last_modified_at: 2017-12-25 20:06:54
 category: post
 tags: [Avro]
 ---
 
+**Contents**
+* TOC
+{:toc}
 When developing applications processing Avro data, a basic understanding of Avro schema and Avro binary encoding is helpful.
 I disscussed a [small topic on Avro schema here]({{ site.baseurl }}{% post_url 2016-02-08-avro-schema %}).
 The focus of this post is [Avro binary encoding](https://avro.apache.org/docs/1.7.7/spec.html#binary_encoding).

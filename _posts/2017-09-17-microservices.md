@@ -2,13 +2,12 @@
 layout: post
 title:  "我对微服务(Microservices)的理解"
 date:   2017-09-17 10:27:07 +0000
+last_modified_at: 2017-12-25 20:09:33
 category: architecture
 tags: [Architecture]
 lang: zh
 ref: microservices
 ---
-
-
 
 软件工程领域隔三差五就会出来一些听起来很虚幻的流行词(buzzwords)。
 Microservices和SOA(service-oriented architecture 面向服务的架构)就属于这一类。

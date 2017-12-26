@@ -2,10 +2,14 @@
 layout: post
 title:  "Typical pointer issues in C++"
 date:   2011-03-01 13:18:00 +0000
+last_modified_at: 2017-12-26 10:36:20
 category: post
 tags: [C++]
 ---
 
+**Contents**
+* TOC
+{:toc}
 Application run into _errors_ when accessing an unknown/undefined memory location (e.g., dereferencing via uninitialized or deleted pointers). _Memory leaks_ occur when you lose track of a piece of dynamically allocated memory. The following are examples of typical pointer-related issues in C++, which I abbreviate as _UNDO (UNinitialized, Deleted, and Overridden) Pointers_.
 
 ## Uninitialized pointer

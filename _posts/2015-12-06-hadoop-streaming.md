@@ -2,6 +2,7 @@
 layout: post
 title:  "Hadoop streaming broken pipe issue"
 date:   2015-12-06 19:11:04 +0000
+last_modified_at: 2017-11-04 08:58:35
 category: hadoop
 tags: [Big Data, Hadoop Streaming]
 ---

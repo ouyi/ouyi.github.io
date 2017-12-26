@@ -2,6 +2,7 @@
 layout: post
 title:  "Avro schema field name and type name differences"
 date:   2016-02-08 19:30:33 +0000
+last_modified_at: 2017-11-05 13:05:52
 category: post
 tags: [Avro]
 ---

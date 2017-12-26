@@ -2,10 +2,14 @@
 layout: post
 title:  "Ad hoc file copying between host and Docker container"
 date:   2016-12-25 07:44:35 +0000
+last_modified_at: 2017-12-25 20:06:47
 category: cicd
 tags: [Docker, CI/CD]
 ---
 
+**Contents**
+* TOC
+{:toc}
 Docker supports file sharing between the host and a container via the `-v` option, which allows a host directory to be accessible within the container at the specified mount point, For example, with `docker run -v /path_on_the_host:/path_in_the_container postgres`, the host directory `/path_on_the_host` can be accessed as `/path_in_the_container` within the container. However, this requires the container being started already with the `-v` option.
 
 Can we copy files to and from a running container, which was started without `-v`, _without restarting_ it? Here is how to do that with _piping_.

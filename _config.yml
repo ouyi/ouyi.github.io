@@ -67,3 +67,6 @@ disqus:
     shortname: memory-spills
 
 paginate: 8
+
+exclude:
+    - '*.sh'
