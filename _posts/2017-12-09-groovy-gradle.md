@@ -177,4 +177,4 @@ because it seems to be too tricky to implement those syntax sugars (and too
 much sugar may not be healthy). Afterall, Gradle is just a build tool, which
 shall be easy to understand, to use, and to extend. Overall I find Gradle
 really cool, because I think having humans writing XML files (as with Maven or
-Spring) is a terrible idea, which are supposed to be processed by machines :wink:.
+Ant) is a terrible idea, which are supposed to be processed by machines :wink:.
