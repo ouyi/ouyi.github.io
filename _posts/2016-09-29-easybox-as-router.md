@@ -6,6 +6,9 @@ category: post
 tags: [Misc]
 ---
 
+**Contents**
+* TOC
+{:toc}
 The cable modem provided by my ISP has a quite weak wifi signal strength. After being disappointed by two wifi repeaters, I turned my decommissioned DSL modem (Vodafone DSL-EasyBox 802) into a router and an extra access point. The EasyBox is connected to the cable modem via a LAN cable. The LAN cable can be extended with a pair of PowerLAN adapters, so that the EasyBox can be placed at where ever the new access point is needed.
 
 I could not find a good how-to article on this in English, so I think maybe I can write down what I did, which might help others.

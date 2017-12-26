@@ -6,6 +6,9 @@ category: post
 tags: [JavaScript]
 ---
 
+**Contents**
+* TOC
+{:toc}
 This shall be a 10-minute read on the JavaScript prototype topic. It is my
 notes when reading Angus Croll's [post on the same topic](https://javascriptweblog.wordpress.com/2010/06/07/understanding-javascript-prototypes/).
 All the code examples here can be easily verified using nodejs or browser
@@ -111,7 +114,7 @@ A's prototype is set to its constructor's prototype property (Function is the co
 A.__proto__ == Function.prototype; // true
 {% endhighlight%}
 
-## <a name="prototype-chain-and-prototypical-inheritance"></a> Prototype chain and prototypical inheritance
+## Prototype chain and prototypical inheritance<a name="prototype-chain-and-prototypical-inheritance"></a>
 
 When object `a` is asked to evaluate property `foo`, JavaScript walks the
 prototype chain (starting with object a itself), checking each link in the

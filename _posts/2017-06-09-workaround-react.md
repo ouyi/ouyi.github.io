@@ -6,6 +6,9 @@ category: web
 tags: [reactjs, npm]
 ---
 
+**Contents**
+* TOC
+{:toc}
 Recently I am working with
 [react-select](https://github.com/JedWatson/react-select/) and was a bit
 annoyed by these warnings shown in my Chrome developer tools console:

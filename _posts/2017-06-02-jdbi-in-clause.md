@@ -6,6 +6,9 @@ category: java
 tags: [JDBI, PostgreSQL]
 ---
 
+**Contents**
+* TOC
+{:toc}
 I had a problem when trying to bind a Java array to an IN clause with JDBI. Here are the solutions I found working.
 
 ## The problem
