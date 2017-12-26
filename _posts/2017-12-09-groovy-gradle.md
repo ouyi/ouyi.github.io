@@ -2,6 +2,7 @@
 layout: post
 title:  "Understanding Gradle DSL"
 date:   2017-12-09 19:25:13 +0000
+last_modified_at: 2017-12-25 20:05:09
 category: post
 tags: [Groovy, Gradle, CI/CD]
 ---

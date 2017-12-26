@@ -2,6 +2,7 @@
 layout: post
 title:  "Typical pointer issues in C++"
 date:   2011-03-01 13:18:00 +0000
+last_modified_at: 2017-12-26 10:36:20
 category: post
 tags: [C++]
 ---

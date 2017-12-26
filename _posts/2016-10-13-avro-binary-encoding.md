@@ -2,6 +2,7 @@
 layout: post
 title:  "A short introduction to Avro binary encoding"
 date:   2016-10-13 18:50:42 +0000
+last_modified_at: 2017-12-25 20:06:54
 category: post
 tags: [Avro]
 ---

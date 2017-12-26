@@ -2,6 +2,7 @@
 layout: post
 title:  "Understanding JavaScript Prototype"
 date:   2016-09-28 17:01:14 +0000
+last_modified_at: 2017-12-25 20:12:15
 category: post
 tags: [JavaScript]
 ---

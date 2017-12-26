@@ -2,6 +2,7 @@
 layout: post
 title:  "AWS CLI InvalidSignatureException in a Docker container"
 date:   2016-07-19 07:42:30 +0000
+last_modified_at: 2017-11-07 07:52:44
 category: post
 tags: [AWS, Docker]
 ---

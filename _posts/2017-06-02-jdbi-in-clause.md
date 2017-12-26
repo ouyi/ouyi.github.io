@@ -2,6 +2,7 @@
 layout: post
 title:  "Parameterized IN clause with JDBI and PostgreSQL"
 date:   2017-06-02 08:28:07 +0000
+last_modified_at: 2017-12-25 20:06:38
 category: java
 tags: [JDBI, PostgreSQL]
 ---

@@ -2,6 +2,7 @@
 layout: post
 title:  "Configure Vodafone DSL-EasyBox 802 as a router and a wifi access point"
 date:   2016-09-29 21:54:46 +0000
+last_modified_at: 2017-12-25 20:07:06
 category: post
 tags: [Misc]
 ---

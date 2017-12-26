@@ -2,6 +2,7 @@
 layout: post
 title:  "Ad hoc file copying between host and Docker container"
 date:   2016-12-25 07:44:35 +0000
+last_modified_at: 2017-12-25 20:06:47
 category: cicd
 tags: [Docker, CI/CD]
 ---
