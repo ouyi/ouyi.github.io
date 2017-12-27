@@ -177,7 +177,9 @@ It turns out that Gradle uses some advanced meta programming features of Groovy
 `name` parameter. To be honest, this is the part of Gradle that I do not like,
 because it seems to be too tricky to implement those syntax sugars (and too
 much sugar may not be healthy). Afterall, Gradle is just a build tool, which
-shall be easy to understand, to use, and to extend. Overall I find Gradle
-really cool, because build scripts written in Gradle DSL (or in Groovy) seem to
-be much cleaner than in XML. With Maven (or Ant), one has to read or write
-build logic in XML, which is supposed to be processed by machines :wink:.
+shall be easy to understand, to use, and to extend.
+
+Overall, I find Gradle really cool, because build scripts written in Gradle DSL
+(or in Groovy) seem to be much cleaner than in XML. With Maven (or Ant), one
+has to read or write build logic in XML, which is supposed to be processed by
+machines :wink:.
