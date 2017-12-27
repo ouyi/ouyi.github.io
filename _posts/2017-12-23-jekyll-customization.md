@@ -2,7 +2,7 @@
 layout: post
 title:  "Customizing Jekyll theme"
 date:   2017-12-23 07:56:11 +0000
-last_modified_at: 2017-12-26 10:48:19
+last_modified_at: 2017-12-27 19:24:34
 category: post
 tags: [Blogging, Jekyll]
 ---
@@ -209,7 +209,7 @@ ouyi.github.io]$ head -7 _posts/2017-12-19-java-mail.md
 layout: post
 title:  "Sending emails from Java applications"
 date:   2017-12-19 22:12:13 +0000
-last_modified_at: 2017-12-26 10:48:19
+last_modified_at: 2017-12-27 19:24:34
 category: post
 tags: [Java, Spring]
 ---
