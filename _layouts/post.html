@@ -21,7 +21,7 @@ layout: default
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    {{ content }}
+    {{ content | replace: '<a href="http', '<a rel="nofollow" target="_blank" href="http' }}
   </div>
 
   {% include prev_next.html prev_url=page.previous.url prev_text=page.previous.title next_url=page.next.url next_text=page.next.title %}

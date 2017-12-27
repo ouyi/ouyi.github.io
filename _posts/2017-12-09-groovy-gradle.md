@@ -2,7 +2,7 @@
 layout: post
 title:  "Understanding Gradle DSL"
 date:   2017-12-09 19:25:13 +0000
-last_modified_at: 2017-12-25 20:05:09
+last_modified_at: 2017-12-27 16:45:09
 category: post
 tags: [Groovy, Gradle, CI/CD]
 ---
@@ -19,37 +19,37 @@ To understand Gradle, we first need to understand a bit of Groovy, because Gradl
 
 ### Closure
 
-A closure is a function bound to (or executed against) some object instances,
-which can be one of these three things: this, owner, and delegate.
+A _closure_ is a function bound to (or executed against) some object instances,
+which can be one of these three things: _this_, _owner_, and _delegate_.
 
 - this: the instance of the enclosing class
 - owner: same as this, or the enclosing closure if exists
 - delegate: same as owner, but can be changed
 
-By default, a variable accessed in a Groovy closures is resolved as follows:
+By default, a variable accessed in a Groovy closure is resolved as follows:
 the closure itself will be checked first, followed by the closure's this scope,
 then the closure's owner, then its delegate.
 
-The following example demostrate changing the delegate of a closure:
+The following example demostrates changing the delegate of a closure:
 
 {% highlight groovy %}
 class MyOtherClass {
-    String myString = "I am over in here in MyOtherClass"
+    String myString = "I am in MyOtherClass"
 }
 
 class MyClass {
     def myClosure = {
-        println myString
+        println myString // myString is undefined (neither on this nor on owner)
     }
 }
 
 MyClass myClass = new MyClass()
 def closure = new MyClass().myClosure
-closure.delegate = new MyOtherClass() // Change the delegate makes variables in the new delegate available to the closure
-closure()   // outputs: "I am over in here in MyOtherClass"
+closure.delegate = new MyOtherClass() // Changing the delegate makes variables in the new delegate available to the closure
+closure()   // outputs: "I am in MyOtherClass"
 {% endhighlight %}
 
-It is important to notice that closure can access member fields and methods defined in another object, which can be changed dynamically at runtime.
+It is important to notice that _closure can access member fields and methods defined in another object, which can be changed dynamically at runtime_.
 As a side note: closure and lambda are different concepts. A lambda is simply an anonymous function, without all the this, owner, and delegate stuff.
 
 ### Method calls
@@ -57,7 +57,6 @@ As a side note: closure and lambda are different concepts. A lambda is simply an
 Method calls in Groovy look quite different than in Java. The following are all method call examples in Groovy:
 
 {% highlight groovy %}
-
 println x // System.out is imported by default, no parenthesis needed if there is at least one parameter
 
 println 1..3 // prints the sequence 1, 2, and 3
@@ -69,20 +68,23 @@ doStuff { println it } // closure as the method parameter, `it` is the default c
 list.each { println it } // for each of the list items, execute the closure, with the item as parameter
 
 list.each { i -> println i } // same as above, the closure parameter can also be specified explicitly
-
-repositories() { println "in a closure" } // call the repositories() method defined on the project object
-
-repositories { println "in a closure" } // same as above, no parenthesis needed
-
 {% endhighlight %}
 
-In contrast to the last example, the following is a method definition:
+The return type distinguishes method definitions from method calls, e.g., this is a method definition:
 
 {% highlight groovy %}
 void repositories() { println "in a closure" }
 {% endhighlight %}
 
 ## Gradle basics
+
+With a basic understanding of closures and method calls in Groovy, we can try to make sense of the following method calls:
+
+{% highlight groovy %}
+repositories() { println "in a closure" } // call the repositories() method defined on the project object
+
+repositories { println "in a closure" } // same as above, no parenthesis needed
+{% endhighlight %}
 
 Note in Gradle DSL, closures are frequently (and idiomatically) used as the
 last method parameter to configure some object. This is a pattern called
@@ -93,8 +95,8 @@ method references which are not local variables or parameters of the closure.
 Gradle uses this for configuration closures, where the delegate object is set
 to the object to be configured.
 
-Gradle processes a build script in three phases: initialization, configuration,
-and execution. The initialization and configuration phases create and configure
+Gradle processes a build script in three phases: _initialization_, _configuration_,
+and _execution_. The initialization and configuration phases create and configure
 project objects and construct a DAG of tasks, which are then executed in the
 execution phase. 
 
@@ -172,9 +174,12 @@ and
 
 It turns out that Gradle uses some advanced meta programming features of Groovy
 (compile-time metaprogramming) to transform the `myTask()` construct to the
-`name` parameter. To be honest, this is the part of Gradle that I do not like
+`name` parameter. To be honest, this is the part of Gradle that I do not like,
 because it seems to be too tricky to implement those syntax sugars (and too
 much sugar may not be healthy). Afterall, Gradle is just a build tool, which
-shall be easy to understand, to use, and to extend. Overall I find Gradle
-really cool, because I think having humans writing XML files (as with Maven or
-Ant) is a terrible idea, which are supposed to be processed by machines :wink:.
+shall be easy to understand, to use, and to extend.
+
+Overall, I find Gradle really cool, because build scripts written in Gradle DSL
+(or in Groovy) seem to be much cleaner than in XML. With Maven (or Ant), one
+has to read or write build logic in XML, which is supposed to be processed by
+machines :wink:.
