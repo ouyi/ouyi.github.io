@@ -2,7 +2,7 @@
 layout: post
 title:  "Customizing Jekyll theme"
 date:   2017-12-23 07:56:11 +0000
-last_modified_at: 2017-12-27 19:24:34
+last_modified_at: 2017-12-29 21:45:40
 category: post
 tags: [Blogging, Jekyll]
 ---
@@ -244,17 +244,16 @@ category. That also means, posts published on the same date (or in the same
 month or year) will be put into different folders, if they are of different
 categories. I do not like that. One could also customize the permalink pattern
 in Jekyll to remove the categories from the URL. But I chose to set the
-categories of all posts to `post`, e.g.:
+categories of all posts to `post`, e.g., the front matter of this post is:
 
 ```
-ouyi.github.io]$ head -7 _posts/2017-12-19-java-mail.md
 ---
 layout: post
-title:  "Sending emails from Java applications"
-date:   2017-12-19 22:12:13 +0000
-last_modified_at: 2017-12-27 19:24:34
+title:  "Customizing Jekyll theme"
+date:   2017-12-23 07:56:11 +0000
+last_modified_at: 2017-12-29 21:45:40
 category: post
-tags: [Java, Spring]
+tags: [Blogging, Jekyll]
 ---
 ```
 
