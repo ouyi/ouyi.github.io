@@ -7,7 +7,6 @@ category: web
 tags: [reactjs, npm]
 ---
 
-**Contents**
 * TOC
 {:toc}
 Recently I am working with

@@ -7,7 +7,6 @@ category: cicd
 tags: [Docker, CI/CD]
 ---
 
-**Contents**
 * TOC
 {:toc}
 Docker supports file sharing between the host and a container via the `-v` option, which allows a host directory to be accessible within the container at the specified mount point, For example, with `docker run -v /path_on_the_host:/path_in_the_container postgres`, the host directory `/path_on_the_host` can be accessed as `/path_in_the_container` within the container. However, this requires the container being started already with the `-v` option.

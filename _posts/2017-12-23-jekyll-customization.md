@@ -7,14 +7,17 @@ category: post
 tags: [Blogging, Jekyll]
 ---
 
-**Contents**
 * TOC
 {:toc}
 While Jekyll supports a lot of themes which work quite well out of the box, it
 allows customizations of almost everything of the site. A theme is a
 pre-defined set of styles, templates, and template variables. My site is based
-on the default Jekyll theme: [minima](https://github.com/jekyll/minima). The
-command `bundle show minima` can be used to find the location where the theme
+on the default Jekyll theme: [minima](https://github.com/jekyll/minima). This
+post shows some of the customizations this site applies on top of minima.
+
+## Override theme defaults
+
+The command `bundle show minima` can be used to find the location where the theme
 artifacts are installed, e.g.:
 
 ```
@@ -170,14 +173,20 @@ My front matter
 My first paragraph.
 ```
 
-The rendered TOC will have a bold section header "Contents", which is nice, but
-it becomes a part of the `post.excerpt` variable, which is not so nice.
+Note that no empty lines shall be present between the `{:toc}` tag
+and the first paragraph, or else the latter will be not included in the
+`post.excerpt` variable, which is used for multiple purposes.
 
-The `post.excerpt` variable is used in the home layout (see also the previous
+First, the `post.excerpt` variable is used in the home layout (see also the previous
 section), to show an excerpt of the post content for each post, in addition to
 its post title. That way the post content can be previewed on the home page(s),
 before a reader decides to click the `read more` button which links to the
-complete post content. Therefore, I had to cut of the extra `Contents` string as follows:
+complete post content.
+
+The rendered TOC will have a bold section header "Contents", which is nice, but
+it becomes a part of the `post.excerpt` variable, and consequently shown as a
+part of the preview, which is not so nice. Therefore, I had to cut off the
+extra `Contents` string as follows:
 
 {% highlight liquid %}
 {% raw %}
@@ -185,9 +194,40 @@ complete post content. Therefore, I had to cut of the extra `Contents` string as
 {% endraw %}
 {% endhighlight %}
 
-Another caveat is that no empty lines shall be present between the `{:toc}` tag
-and the first paragraph, or else the latter will be not included in the
-`post.excerpt` variable.
+Second, the 'post.excerpt' variable seems to be used to populate the
+description meta tags. There I found no easy way to get rid of the extra
+`Contents` string. Therefore, I removed the `**Contents**` heading from the
+markdown, and instead, insert it with a JavaScript hack.
+
+{% highlight javascript %}
+<script>
+    function domReady() {
+        var toc = document.getElementById('markdown-toc');
+        if (toc) {
+            toc.insertAdjacentHTML('beforebegin', '<p><strong>Table of contents</strong></p>');
+            //toc.insertAdjacentHTML('afterend', '<br/>');
+        }
+    }
+
+    if ( document.addEventListener ) { // Mozilla, Opera, Webkit
+        document.addEventListener( "DOMContentLoaded", function() {
+            document.removeEventListener( "DOMContentLoaded", arguments.callee, false);
+            domReady();
+        }, false );
+    } else if ( document.attachEvent ) { // If IE event model is used
+        // ensure firing before onload
+        document.attachEvent("onreadystatechange", function() {
+            if ( document.readyState === "complete" ) {
+                document.detachEvent( "onreadystatechange", arguments.callee );
+                domReady();
+            }
+        });
+    }
+</script>
+{% endhighlight %}
+
+This file is included as the last line in footer.html, so that the `<script>`
+tag appears immediately before the closing `</body>` tag.
 
 ## Categories and tags
 

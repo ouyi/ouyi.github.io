@@ -7,7 +7,6 @@ category: post
 tags: [C++]
 ---
 
-**Contents**
 * TOC
 {:toc}
 Application run into _errors_ when accessing an unknown/undefined memory location (e.g., dereferencing via uninitialized or deleted pointers). _Memory leaks_ occur when you lose track of a piece of dynamically allocated memory. The following are examples of typical pointer-related issues in C++, which I abbreviate as _UNDO (UNinitialized, Deleted, and Overridden) Pointers_.

@@ -7,7 +7,6 @@ category: post
 tags: [Blogging, Jekyll]
 ---
 
-**Contents**
 * TOC
 {:toc}
 Recently I migrated [my blog](https://ouyi.github.io) from Blogspot to [Github

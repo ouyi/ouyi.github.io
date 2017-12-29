@@ -7,7 +7,6 @@ category: post
 tags: [Avro]
 ---
 
-**Contents**
 * TOC
 {:toc}
 When developing applications processing Avro data, a basic understanding of Avro schema and Avro binary encoding is helpful.
