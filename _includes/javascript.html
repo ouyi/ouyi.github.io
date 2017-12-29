@@ -7,15 +7,15 @@
     }
 
     if ( document.addEventListener ) { // Mozilla, Opera, Webkit
-        document.addEventListener( "DOMContentLoaded", function() {
-            document.removeEventListener( "DOMContentLoaded", arguments.callee, false);
+        document.addEventListener( 'DOMContentLoaded', function() {
+            document.removeEventListener( 'DOMContentLoaded', arguments.callee, false);
             domReady();
         }, false );
     } else if ( document.attachEvent ) { // If IE event model is used
         // ensure firing before onload
-        document.attachEvent("onreadystatechange", function() {
-            if ( document.readyState === "complete" ) {
-                document.detachEvent( "onreadystatechange", arguments.callee );
+        document.attachEvent('onreadystatechange', function() {
+            if ( document.readyState === 'complete' ) {
+                document.detachEvent( 'onreadystatechange', arguments.callee );
                 domReady();
             }
         });

@@ -202,29 +202,27 @@ description meta tags. There I found no easy way to get rid of the extra
 markdown, and instead, insert it with a JavaScript hack.
 
 {% highlight javascript %}
-<script>
-    function domReady() {
-        var toc = document.getElementById('markdown-toc');
-        if (toc) {
-            toc.insertAdjacentHTML('beforebegin', '<p><strong>Table of contents</strong></p>');
-        }
+function domReady() {
+    var toc = document.getElementById('markdown-toc');
+    if (toc) {
+        toc.insertAdjacentHTML('beforebegin', '<p><strong>Table of contents</strong></p>');
     }
+}
 
-    if ( document.addEventListener ) { // Mozilla, Opera, Webkit
-        document.addEventListener( "DOMContentLoaded", function() {
-            document.removeEventListener( "DOMContentLoaded", arguments.callee, false);
+if ( document.addEventListener ) { // Mozilla, Opera, Webkit
+    document.addEventListener( 'DOMContentLoaded', function() {
+        document.removeEventListener( 'DOMContentLoaded', arguments.callee, false);
+        domReady();
+    }, false );
+} else if ( document.attachEvent ) { // If IE event model is used
+    // ensure firing before onload
+    document.attachEvent('onreadystatechange', function() {
+        if ( document.readyState === 'complete' ) {
+            document.detachEvent( 'onreadystatechange', arguments.callee );
             domReady();
-        }, false );
-    } else if ( document.attachEvent ) { // If IE event model is used
-        // ensure firing before onload
-        document.attachEvent("onreadystatechange", function() {
-            if ( document.readyState === "complete" ) {
-                document.detachEvent( "onreadystatechange", arguments.callee );
-                domReady();
-            }
-        });
-    }
-</script>
+        }
+    });
+}
 {% endhighlight %}
 
 [The above
