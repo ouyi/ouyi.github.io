@@ -207,7 +207,6 @@ markdown, and instead, insert it with a JavaScript hack.
         var toc = document.getElementById('markdown-toc');
         if (toc) {
             toc.insertAdjacentHTML('beforebegin', '<p><strong>Table of contents</strong></p>');
-            //toc.insertAdjacentHTML('afterend', '<br/>');
         }
     }
 
