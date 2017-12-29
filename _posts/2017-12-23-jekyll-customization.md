@@ -149,7 +149,9 @@ parameters:
 {% endraw %}
 {% endhighlight %}
 
-The same macro is reused by the [post layout](https://github.com/ouyi/ouyi.github.io/blob/master/_layouts/post.html) to render the links to the previous and next _posts_.
+The same macro is reused by the [post
+layout](https://github.com/ouyi/ouyi.github.io/blob/master/_layouts/post.html)
+to render the links to the previous and next _posts_.
 
 As a side note, Jekyll pagination automatically generates the `<link>` tags
 with `rel="next"` and `rel="prev"` attributes as [recommended by
@@ -226,8 +228,12 @@ markdown, and instead, insert it with a JavaScript hack.
 </script>
 {% endhighlight %}
 
-This file is included as the last line in footer.html, so that the `<script>`
-tag appears immediately before the closing `</body>` tag.
+[The above
+code](https://github.com/ouyi/ouyi.github.io/blob/master/_includes/javascript.html)
+is included as the last line in
+[footer.html](https://github.com/ouyi/ouyi.github.io/blob/master/_includes/footer.html),
+so that the `<script>` tag appears immediately before the closing `</body>`
+tag.
 
 ## Categories and tags
 
