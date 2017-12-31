@@ -69,6 +69,7 @@
 }
 #markdown-toc::before {
   content: "Contents";
+  line-height: 200%;
   font-weight: bold;
   @include relative-font-size(1.25);
   @include media-query($on-laptop) {
@@ -77,5 +78,5 @@
 }
 ul#markdown-toc li {
   list-style-position: inside;
-  padding-left: 0.3em;
+  padding-left: 0.35em;
 }
