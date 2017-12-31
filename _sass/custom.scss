@@ -75,7 +75,7 @@
     @include relative-font-size(1.125);
   }
 }
-ul li {
+ul#markdown-toc li {
   list-style-position: inside;
   padding-left: 0.3em;
 }
