@@ -4,7 +4,7 @@ title:  "Rendering table of contents in Jekyll"
 date:   2017-12-31 13:20:00 +0000
 last_modified_at: 2017-12-31 15:36:16
 category: post
-tags: [Jekyll]
+tags: [Jekyll, JavaScript, CSS]
 ---
 
 * TOC
