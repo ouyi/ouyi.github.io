@@ -22,36 +22,29 @@
   @include relative-font-size(1.125);
 }
 .post-title {
-  @include relative-font-size(2);
   letter-spacing: -1px;
   line-height: 1;
-
+  @include relative-font-size(2);
   @include media-query($on-laptop) {
     @include relative-font-size(1.5);
   }
 }
 .post-content {
   margin-bottom: $spacing-unit;
-
   h2 {
     @include relative-font-size(1.5);
-
     @include media-query($on-laptop) {
       @include relative-font-size(1.375);
     }
   }
-
   h3 {
     @include relative-font-size(1.25);
-
     @include media-query($on-laptop) {
       @include relative-font-size(1.125);
     }
   }
-
   h4 {
     @include relative-font-size(1.1);
-
     @include media-query($on-laptop) {
       @include relative-font-size(1.0);
     }
@@ -78,7 +71,6 @@
   content: "Contents";
   font-weight: bold;
   @include relative-font-size(1.25);
-
   @include media-query($on-laptop) {
     @include relative-font-size(1.125);
   }
