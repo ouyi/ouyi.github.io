@@ -71,3 +71,19 @@
 .prev-next .next {
   text-align: right;
 }
+#markdown-toc {
+  margin-left: 0em;
+}
+#markdown-toc::before {
+  content: "Contents";
+  font-weight: bold;
+  @include relative-font-size(1.25);
+
+  @include media-query($on-laptop) {
+    @include relative-font-size(1.125);
+  }
+}
+ul li {
+  list-style-position: inside;
+  padding-left: 0.3em;
+}
