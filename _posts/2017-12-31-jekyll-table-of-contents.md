@@ -44,14 +44,14 @@ My first paragraph.
 
 Note that no empty lines shall be present between the `{:toc}` tag and the
 first paragraph of the article (`My first paragraph.` in the code example), or
-else the latter will be not included in the `post.excerpt` variable, which is
-used for multiple purposes. First, the `post.excerpt` variable is used in [the
+else the latter will not be included in the `post.excerpt` variable, which is
+used for multiple purposes on this site. First, the `post.excerpt` variable is used in [the
 home layout to show an excerpt of the post content for each post]({{
 site.baseurl }}{% post_url 2017-12-23-jekyll-customization
 %}#pagination-of-the-home-page), in addition to its post title. That way the
 post content can be previewed on the home page(s), before a reader decides to
 click the `read more` button which links to the complete post content. Second,
-the 'post.excerpt' variable is also used to populate the description meta
+the `post.excerpt` variable is also used to populate the description meta
 tags important for SEO. 
 
 ## Adding the TOC heading
@@ -77,7 +77,7 @@ My first paragraph.
 
 This will insert a bold "Contents" line as the heading before the TOC, which is
 nice, but the word "Contents" becomes a part of the `post.excerpt` variable,
-and consequently shown as a part of the preview, which is not so nice.
+and is consequently shown as a part of the preview, which is not so nice.
 Therefore, I had to cut off the extra `Contents` string as follows:
 
 {% highlight liquid %}
@@ -93,7 +93,7 @@ which is not nice.
 ### With JavaScript
 
 Therefore, I removed the `**Contents**` heading from the
-markdown, and instead, insert it with a JavaScript hack.
+markdown, and came up with a JavaScript hack.
 
 {% highlight javascript %}
 function domReady() {
@@ -141,11 +141,9 @@ It turns out arbitrary text can be inserted using CSS, e.g.,
 The complete solution is adding the following CSS code to [this file](https://github.com/ouyi/ouyi.github.io/blob/master/_sass/custom.scss):
 
 {% highlight scss %}
-#markdown-toc {
-  margin-left: 0em;
-}
 #markdown-toc::before {
   content: "Contents";
+  margin-left: -$spacing-unit;
   line-height: 200%;
   font-weight: bold;
   @include relative-font-size(1.25);
@@ -153,16 +151,12 @@ The complete solution is adding the following CSS code to [this file](https://gi
     @include relative-font-size(1.125);
   }
 }
-ul#markdown-toc li {
-  list-style-position: inside;
-  padding-left: 0.35em;
-}
 {% endhighlight %}
 
-This solution purely uses CSS, requires only touching one file, and, as with
+This pure CSS solution touches only one file, and, as with
 the JavaScript solution, it does not polute the `post.excerpt` variable.
 
 However, I am not sure how to deal with i18n, e.g., for an article written in
 Chinese, one would prefer to add "目录" instead of "Contents". That could be
-easier achieved with the JavaScript solution. If you have a good solution,
-please leave a comment. Thanks!
+easier with the JavaScript solution. If you have a good solution, please leave
+a comment. Thanks!
