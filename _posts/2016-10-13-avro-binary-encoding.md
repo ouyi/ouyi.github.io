@@ -2,12 +2,11 @@
 layout: post
 title:  "A short introduction to Avro binary encoding"
 date:   2016-10-13 18:50:42 +0000
-last_modified_at: 2017-12-25 20:06:54
+last_modified_at: 2017-12-27 20:21:51
 category: post
 tags: [Avro]
 ---
 
-**Contents**
 * TOC
 {:toc}
 When developing applications processing Avro data, a basic understanding of Avro schema and Avro binary encoding is helpful.
@@ -67,8 +66,10 @@ And some data of this schema in JSON format stored in a file `person.json`:
 The data can be converted from JSON to Avro binary file with avro-tools like this:
 
 {% highlight bash %}
+{% raw %}
 $ wget http://repo1.maven.org/maven2/org/apache/avro/avro-tools/1.7.7/avro-tools-1.7.7.jar
 $ java -jar avro-tools-1.7.7.jar fromjson --schema-file Person.avsc person.json > person.avro
+{% endraw %}
 {% endhighlight %}
 
 On Linux, the Avro binary file can be viewed with `xxd`:

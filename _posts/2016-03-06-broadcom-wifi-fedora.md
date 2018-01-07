@@ -7,7 +7,6 @@ category: post
 tags: [Linux]
 ---
 
-**Contents**
 * TOC
 {:toc}
 After installing Fedora 23 Linux, I had to do a few steps to get my wifi adapter working, which is a Broadcom BCM43228 card. It turns out that these steps have to be repeated each time after a kernel update.

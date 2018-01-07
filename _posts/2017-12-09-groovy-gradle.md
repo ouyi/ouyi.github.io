@@ -7,7 +7,6 @@ category: post
 tags: [Groovy, Gradle, CI/CD]
 ---
 
-**Contents**
 * TOC
 {:toc}
 Most of the time, Gradle works just fine for me, but I had difficulties

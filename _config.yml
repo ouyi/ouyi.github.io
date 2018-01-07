@@ -59,6 +59,7 @@ exclude:
   - Gemfile.lock
   - vendor
   - README.md
+  - '*.sh'
 
 google_analytics: UA-37629863-6
 baidu_autopush: true
@@ -67,6 +68,3 @@ disqus:
     shortname: memory-spills
 
 paginate: 8
-
-exclude:
-    - '*.sh'

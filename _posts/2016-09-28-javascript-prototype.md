@@ -7,7 +7,6 @@ category: post
 tags: [JavaScript]
 ---
 
-**Contents**
 * TOC
 {:toc}
 This shall be a 10-minute read on the JavaScript prototype topic. It is my
