@@ -6,6 +6,10 @@ category: post
 tags: [data processing]
 ---
 
+## Open source vs proprietary solution
+
+## Dependency injection (path variables)
+
 ## Scheduling
 
 ## Idempotent
@@ -15,3 +19,7 @@ tags: [data processing]
 ## Data cleansing instead of fixing
 
 ## Divide and conquer instead of the shared main script monster
+
+## Small files and big files
+
+## Merge before upload
