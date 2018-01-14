@@ -2,7 +2,7 @@
 layout: post
 title:  "Rendering table of contents in Jekyll"
 date:   2017-12-31 13:20:00 +0000
-last_modified_at: 2017-12-31 15:36:16
+last_modified_at: 2018-01-14 19:55:44
 category: post
 tags: [Jekyll, JavaScript, CSS]
 ---
@@ -11,7 +11,7 @@ tags: [Jekyll, JavaScript, CSS]
 {:toc}
 Having a table of contents (TOC) makes an article more readable. Our goal is to
 automatically generate TOC out of the headings in an article, for a site based
-on Jekyll and hosted on Github Pages, which is the setup of this site.
+on Jekyll and hosted on GitHub Pages, which is the setup of this site.
 
 ## Genearting the TOC
 
@@ -27,7 +27,7 @@ appear in the TOC, which is not nice.
 
 Fortunately, rendering of table of contents (TOC) is supported by kramdown,
 which is Jekyll 3.0.0's default Markdown processor, and, as a side note, [the
-only supported Markdown processor on Github
+only supported Markdown processor on GitHub
 Pages](https://help.github.com/articles/updating-your-markdown-processor-to-kramdown/).
 Adding the following code snippet directly after the front matter will do the
 trick:

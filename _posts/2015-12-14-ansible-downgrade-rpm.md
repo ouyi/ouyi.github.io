@@ -2,7 +2,7 @@
 layout: post
 title:  "Downgrade RPMs using Ansible"
 date:   2015-12-14 20:48:20 +0000
-last_modified_at: 2017-11-04 08:58:35
+last_modified_at: 2018-01-14 19:55:23
 category: cicd
 tags: [Ansible, CI/CD]
 ---
@@ -12,7 +12,7 @@ doing a rollback, i.e., downgrading the RPM to its previously installed, older
 version, is a typical backoff procedure. It surprises me a lot that the Ansible
 yum module does not support this out of the box, at least not with version
 1.9.4, which I tested. There is [an open pull request for this feature on
-Github](https://github.com/ansible/ansible-modules-core/pull/2744).
+GitHub](https://github.com/ansible/ansible-modules-core/pull/2744).
 
 My solution is using a shell task to do the downgrade when a variable
 `rollback` is explicitly set to true. The shell task calls "yum downgrade". The
