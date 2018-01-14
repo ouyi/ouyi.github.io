@@ -2,7 +2,7 @@
 layout: post
 title:  "Rendering table of contents in Jekyll"
 date:   2017-12-31 13:20:00 +0000
-last_modified_at: 2017-12-31 15:36:16
+last_modified_at: 2018-01-14 19:55:44
 category: post
 tags: [Jekyll, JavaScript, CSS]
 ---

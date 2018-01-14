@@ -2,7 +2,7 @@
 layout: post
 title:  "Migrating from Blogspot to GitHub Pages"
 date:   2017-10-14 07:56:11 +0000
-last_modified_at: 2017-12-25 19:54:01
+last_modified_at: 2018-01-14 19:55:39
 category: post
 tags: [Blogging, Jekyll]
 ---
