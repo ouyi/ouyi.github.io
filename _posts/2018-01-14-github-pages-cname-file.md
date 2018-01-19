@@ -9,13 +9,24 @@ tags: [Blogging, DNS]
 
 * TOC
 {:toc}
-GitHub Pages support custom domains, i.e., sites hosted there can be accessed via DNS names like `www.my-awesome-domain.com`, in addition to the default DNS names like `username.github.io` or `username.github.io/projectname`. To figure out how it works, I did some tests, which are described below. To repeat these tests[^4], you need a GitHub account and a test domain.
+GitHub Pages support custom domains, i.e., sites hosted there can be accessed
+via DNS names like `www.github.com`, in addition to the default DNS names like
+`ouyi.github.io` or `ouyi.github.io/test`. I did some tests to figure out how
+it works. Those tests are described below. To repeat them[^dns_cache], you need a
+GitHub account and a test domain.
 
 ## Create a test project on GitHub
 
-First, lets create a test project on GitHub. This is the test project I created: [ouyi.github.io/test](https://ouyi.github.io/test). Based on this test project, we can create a minimal working example for GitHub Pages. That requires only a [minimalistic HTML index page on the special branch `gh-pages`](https://github.com/ouyi/test/blob/gh-pages/index.html). With that in place, we have created a so called [Project Pages site](https://help.github.com/articles/user-organization-and-project-pages/), which is accessible at `http://ouyi.github.io/test`.
+First, lets create a test project on GitHub. This is the test project I
+created: [ouyi.github.io/test](https://ouyi.github.io/test). Based on this test
+project, we can create a minimal working example for GitHub Pages. That
+requires only a [minimalistic HTML index page on the special branch
+`gh-pages`](https://github.com/ouyi/test/blob/gh-pages/index.html). With that
+in place, we have created a so called [Project Pages
+site](https://help.github.com/articles/user-organization-and-project-pages/),
+which is accessible at `https://ouyi.github.io/test`.
 
-Now we can test it with the `curl` command-line tool[^1].
+Now we can test it with the `curl` command-line tool[^browsers].
 
 ```
 $ curl -iL "http://ouyi.github.io/test"
@@ -85,17 +96,30 @@ X-Fastly-Request-ID: 59d0f0fc8487678fe5e489f73b67f96c4de5afc8
 </html>
 ```
 
-Quite a lot was going on to serve our minimal `Hello, World!` page. The first HTTP response redirects the user agent (`curl` or a browser) to the HTTPS version of the same location. The second response redirects to the canonical location (which has a trailing slash `/`) of the site. Finally, the third response returns the HTML page.
+Quite a lot was going on to serve our minimal `Hello, World!` page. The first
+HTTP response redirects the user agent (`curl` or a browser) to the HTTPS
+version of the same location. The second response redirects to the canonical
+location (which has a trailing slash `/`) of the site. Finally, the third
+response returns the HTML page.
 
 ## Setup
 
 ### Set up DNS
 
-Now we will set up DNS to point our test domain names to the [GitHub Pages IP addresses](https://help.github.com/articles/setting-up-an-apex-domain/).
+Now we will set up DNS to point our test domain names to the [GitHub Pages IP
+addresses](https://help.github.com/articles/setting-up-an-apex-domain/).
 
-We follow the convention to [create an _A record_ for the apex domain](https://blog.cloudflare.com/zone-apex-naked-domain-root-domain-cname-supp/) `builders-it.de` to be able to resolve it to an IP address (we picked 192.30.252.154), and a _CNAME record_ for the www subdomain `www.builders-it.de` as an alias of `builders-it.de`. How to create those records depends on the DNS provider. I use 1und1.de, which seems to only allow one A record[^2] for the apex domain (a.k.a. the root domain). But that is sufficient for our tests.
+We follow the convention to [create an _A record_ for the apex
+domain](https://blog.cloudflare.com/zone-apex-naked-domain-root-domain-cname-supp/)
+`builders-it.de` to be able to resolve it to an IP address (we picked
+192.30.252.154), and a _CNAME record_ for the www subdomain
+`www.builders-it.de` as an alias of `builders-it.de`. How to create those
+records depends on the DNS provider. I use 1und1.de, which seems to only allow
+one A record[^a_records] for the apex domain (a.k.a. the root domain). But that is
+sufficient for our tests.
 
-We can verify the DNS set up with the `dig` command-line tool[^3]. After some minutes of waiting, the output shall look like the following:
+We can verify the DNS set up with the `dig` command-line tool[^host_cmd]. After some
+minutes of waiting, the output shall look like the following:
 
 ```
 $ dig www.builders-it.de +nostats +nocomments
@@ -109,7 +133,11 @@ builders-it.de.		3413	IN	A	192.30.252.154
 
 ### Set up GitHub Pages redirect
 
-Now we need to tell GitHub Pages our domain name. That can be done by creating a [CNAME file containing the www subdomain](https://github.com/ouyi/test/blob/gh-pages/CNAME), again, on the special branch `gh-pages`. It could also be done using the GitHub Web UI, as shown in the following screen shot:
+Now we need to tell GitHub Pages our domain name. That can be done by creating
+a [CNAME file containing the www
+subdomain](https://github.com/ouyi/test/blob/gh-pages/CNAME), again, on the
+special branch `gh-pages`. It could also be done using the GitHub Web UI, as
+shown in the following screen shot:
 
 ![screen shot 2018-01-14 at 14 56 30](https://user-images.githubusercontent.com/15970333/34918207-7d8db288-f94f-11e7-8490-f6014c0567fc.png "GitHub Pages custom domain setting under project settings")
 
@@ -153,19 +181,31 @@ $ curl -iLv "http://www.builders-it.de" 2>&1 | grep '^> '
 >
 ```
 
-The GitHub Pages IP address (which is most likely a load balancer IP address) in this example is resolved in two steps:
+The GitHub Pages IP address (which is most likely a load balancer IP address)
+in this example is resolved in two steps:
 
-1. DNS figures out the canonical domain name (which is the root domain name in our setup) for `www.builders-it.de` using the CNAME record, i.e., `www.builders-it.de => builders-it.de`.
-2. DNS figures out the IP address for the canonical domain name using the A record, i.e., `builders-it.de => 192.30.252.154`.
+1. DNS figures out the canonical domain name (which is the root domain name in
+our setup) for `www.builders-it.de` using the CNAME record, i.e.,
+`www.builders-it.de => builders-it.de`.
 
-The CNAME could also be `www.builders-it.de => ouyi.github.io`, as documented in the GitHub official documentation. In that case, the GitHub name servers are responsible for resolving the IP address. The above two steps would be:
+2. DNS figures out the IP address for the canonical domain name using the A
+record, i.e., `builders-it.de => 192.30.252.154`.
 
-1. DNS figures out the canonical domain name (which is the root domain name in our setup) for `www.builders-it.de` using the CNAME record, i.e., `www.builders-it.de => ouyi.github.io`.
-2. GitHub Pages name servers figure out an IP address for the GitHub Pages subdomain, i.e., `ouyi.github.io => some ip address`.
+The CNAME could also be `www.builders-it.de => ouyi.github.io`, as documented
+in the GitHub official documentation. In that case, the GitHub name servers are
+responsible for resolving the IP address. The above two steps would be:
+
+1. DNS figures out the canonical domain name (which is the root domain name in
+our setup) for `www.builders-it.de` using the CNAME record, i.e.,
+`www.builders-it.de => ouyi.github.io`.
+
+2. GitHub Pages name servers figure out an IP address for the GitHub Pages
+subdomain, i.e., `ouyi.github.io => some ip address`.
 
 ### Requests using the root domain name
 
-Accessing the site using the root domain name involves a 301 redirect to the www subdomain.
+Accessing the site using the root domain name involves a 301 redirect to the
+www subdomain.
 
 ```
 $ curl -iL "http://builders-it.de"
@@ -216,11 +256,16 @@ $ curl -iLv "http://builders-it.de" 2>&1 | grep '^> '
 >
 ```
 
-The first request goes directly to the GitHub Pages IP address (due to the A record). The GitHub server at that address returns a 301 response, which redirects the user agent to the www subdomain (because of the CNAME file). This kind of redirect seems to be undocumented by GitHub Pages.
+The first request goes directly to the GitHub Pages IP address (due to the A
+record). The GitHub server at that address returns a 301 response, which
+redirects the user agent to the www subdomain (because of the CNAME file). This
+kind of redirect seems to be undocumented by GitHub Pages.
 
 ### Requests using the default DNS name
 
-To see whether the default DNS name for the Project Pages site is still working, we can repeat the very first test we did after we [created the test project on GitHub](#create-a-test-project-on-github).
+To see whether the default DNS name for the Project Pages site is still
+working, we can repeat the very first test we did after we [created the test
+project on GitHub](#create-a-test-project-on-github).
 
 ```
 $ curl -iL "http://ouyi.github.io/test"
@@ -265,7 +310,9 @@ X-GitHub-Request-Id: FBCA:7582:38852CC:4EB67B9:5A5B274B
 </html>
 ```
 
-It works, but differently. There is no redirect to the HTTPS location and there is no redirect to add the trailing slash. The first response redirects the user agent to the www subdomain (due to the CNAME file).
+It works, but differently. There is no redirect to the HTTPS location and there
+is no redirect to add the trailing slash. The first response redirects the user
+agent to the www subdomain (due to the CNAME file).
 
 ```
 $ curl -iLv "http://ouyi.github.io/test" 2>&1 | grep '^> '
@@ -280,7 +327,9 @@ $ curl -iLv "http://ouyi.github.io/test" 2>&1 | grep '^> '
 >
 ```
 
-Interestingly, the redirect to add the trailing slash still occurs when requesting the HTTPS URL directly, and there is no redirect to the custom domain.
+Interestingly, the redirect to add the trailing slash still occurs when
+requesting the HTTPS URL directly, and there is no redirect to the custom
+domain.
 
 ```
 $ curl -iL "https://ouyi.github.io/test"
@@ -334,13 +383,22 @@ X-Fastly-Request-ID: b4f06f7769fd14f5924d09fe3729439816761733
 
 ## Conclusion
 
-Settng up custom domain for GitHub Pages involves two aspects: 1. Set up the domain names to point to the GitHub Pages IP address(es) 2. Add a CNAME file in the project to redirect HTTP requests to the custom domain.
+Settng up custom domain for GitHub Pages involves two aspects: 1. Set up the
+domain names to point to the GitHub Pages IP address(es) 2. Add a CNAME file in
+the project to redirect HTTP requests to the custom domain.
 
-It seems that the DNS name in the CNAME file is used for the HTTP 301 redirect. So, probably a better name for that file could be REDIRECT. Most of the DNS providers nowadays also support HTTP redirects, which can be used to redirect HTTP requests to HTTPS locations. But they work the same way as the GitHub redirect does, i.e., they use a Web server.
+It seems that the DNS name in the CNAME file is used for the HTTP 301 redirect.
+So, probably a better name for that file could be REDIRECT. Most of the DNS
+providers nowadays also support HTTP redirects, which can be used, e.g., to
+redirect HTTP requests to HTTPS locations. But they work the same way as the
+GitHub redirect does, i.e., they use a Web server.
 
 **Footnotes**
 
-[^1]: Tests can also be done with Chrome developer tools.
-[^2]: Some DNS providers support multiple A records for the apex domain.
-[^3]: Similar information can also be obtained using the commands `host -a www.builders-it.de` and `host -a builders-it.de`.
-[^4]: While doing DNS-related tests, it might be helpful to flush the host DNS cache from time to time, which can be done with various methods, e.g., you can clear host DNS cache with Chrome by opening the URL `chrome://net-internals/#dns` and click the corresponding button on that page, or if you are on a macbook with macOS Sierra, the host DNS cache can be cleared by the command `sudo killall -HUP mDNSResponder`.
+[^browsers]: Tests can also be done with browsers, e.g., Chrome developer tools.
+
+[^a_records]: Some DNS providers support multiple A records for the apex domain.
+
+[^host_cmd]: Similar information can also be obtained using the commands `host -a www.builders-it.de` and `host -a builders-it.de`.
+
+[^dns_cache]: While doing DNS-related tests, it might be helpful to flush the host DNS cache from time to time, which can be done with various methods, e.g., you can clear host DNS cache with Chrome by opening the URL `chrome://net-internals/#dns` and click the corresponding button on that page, or if you are on a macbook with macOS Sierra, the host DNS cache can be cleared by the command `sudo killall -HUP mDNSResponder`.
