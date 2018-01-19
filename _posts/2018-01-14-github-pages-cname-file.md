@@ -2,7 +2,7 @@
 layout: post
 title:  "How does the GitHub Pages CNAME file work"
 date:   2018-01-14 08:50:00 +0000
-last_modified_at: 2018-01-14 19:52:06
+last_modified_at: 2018-01-19 19:50:41
 category: post
 tags: [Blogging, DNS]
 ---
