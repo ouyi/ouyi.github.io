@@ -147,6 +147,8 @@ yarn application -movetoqueue appID -queue targetQueueName
 
 两者的区别主要是实现上的区别以及参数配置上的区别。个人感觉公平调度器对优先级以及并发度的控制比容器调度器更直观。
 
+本人猜测，[容器调度器由HortonWorks主导](https://hortonworks.com/blog/yarn-capacity-scheduler/)，而[公平调度器由cloudera主导](https://blog.cloudera.com/blog/2016/01/untangling-apache-hadoop-yarn-part-3/)。
+
 最后一点小提示：调度器可以用terasort这样的MapReduce程序来进行简单测试。比如：
 
 ```
