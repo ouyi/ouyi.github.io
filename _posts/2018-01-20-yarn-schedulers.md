@@ -11,7 +11,7 @@ ref: yarn-schedulers
 
 * TOC
 {:toc}
-最近单位的Hadoop集群发生了死锁问题，于是对Hadoop的调度程序发生了兴趣。YARN支持可插拔的任务调度器（严格来说也许应该叫资源分配器）。官方文档里面讲了两种：容量调度器 (capacity scheduler) 和公平调度器 (fair scheduler)。默认的是容量调度器。下面是啃完文档后的一点总结，浓缩的都是精华 :wink:。
+最近单位的Hadoop集群发生了死锁问题 (deadlock)，于是对Hadoop的调度程序发生了兴趣。YARN支持可插拔的任务调度器（严格来说也许应该叫资源分配器）。官方文档里面讲了两种：容量调度器 (capacity scheduler) 和公平调度器 (fair scheduler)。默认的是容量调度器。下面是啃完文档后的一点总结，浓缩的都是精华 :wink:。
 
 ## 容量调度器
 
