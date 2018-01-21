@@ -50,7 +50,6 @@ ref: yarn-schedulers
 容量调度器同时兼顾容量保证和弹性。
 
 - 容量保证: 队列被分配一定量的可支配的资源。资源可以由集群容量的百分比来表示。
-
 - 弹性：闲置资源可以分配给任何队列，也就是说队列可以使用超出其容量的资源。
 
 这就确保资源以可预测的和弹性的方式提供给队列，从而防止集群中资源的人为孤岛，以提高利用率。
@@ -80,7 +79,6 @@ ref: yarn-schedulers
 
 - `yarn.scheduler.capacity.maximum-applications / yarn.scheduler.capacity.<queue-path>.maximum-applications`
 应用程序的数量的最大值。这是一个硬性的限制，超过这个限制，提交任何申请时，都会被拒绝（应用程序会出错退出）。
-
 - `yarn.scheduler.capacity.maximum-am-resource-percent / yarn.scheduler.capacity.<queue-path>.maximum-am-resource-percent`
 集群中可用于运行应用程序主控的资源的最大百分比。这个值间接控制并发活动应用程序的数量。这是一个柔性的限制。超过这个限制，提交的申请会被接受并在队列里面等候。
 
@@ -107,7 +105,7 @@ $ $HADOOP_YARN_HOME/bin/yarn rmadmin -refreshQueues
 
 ### 调度策略
 
-公平调度器支持可插拔的调度策略，并且支持为每个队列设置不同的调度策略。内置的调度策略有FifoPolicy，FairSharePolicy（默认）和DominantResourceFairnessPolicy。默认情况下，公平调度器只基于内存资源使用公平性调度策略 (FairSharePolicy)。它可以配置为主导资源公平策略 (DominantResourceFairnessPolicy) 来调度内存和CPU。关于主导资源，我的理解就是瓶颈资源。
+公平调度器支持可插拔的调度策略，并且支持为每个队列设置不同的调度策略。内置的调度策略有FIFO(FifoPolicy)，FAIR(FairSharePolicy)，和DRF(DominantResourceFairnessPolicy)。默认情况下，公平调度器只基于内存资源使用公平性调度策略 (FAIR)。它可以配置为主导资源公平策略 (DRF) 来调度内存和CPU。关于主导资源，我的理解就是瓶颈资源。
 
 ### 权重和优先级
 
@@ -132,22 +130,29 @@ $ $HADOOP_YARN_HOME/bin/yarn rmadmin -refreshQueues
 yarn application -movetoqueue appID -queue targetQueueName
 ```
 
-## 总结
+## 相似和区别
 
-总体来说，容量调度器和公平调度器的相似多过区别。
+### 两者的相似性
 
-两者的相似性：
 - 都是Hadoop的可插拔调度程序。
 - 都支持分层的队列结构。
-- 都支持限制每个用户和每个队列运行的应用程序的数量，都支持资源的强夺，以防止死锁。
-- 都支持对队列分配策略 (placement policy) 进行配置。队列分配策略负责将应用程序映射到队列上 (application-to-queue mapping)。这种分配一般是基于用户名或组名的一些规则。
-- 都对多用户和安全性有支持，比如每个队列都有严格的ACL控制哪些用户可以将应用程序提交到哪个队列。 此外，还有一些安全措施可以确保用户无法查看和/或修改其他用户的应用程序。
-- 都支持闲置资源的分配和利用。同时又都提供了一套限制来防止单个应用程序，用户和队列独占整个队列或集群的资源。
+- 都支持队列层面上的最少资源保证。
+- 都支持闲置资源的分配和利用。
+- 都提供了一套限制来防止单个应用程序，用户和队列独占整个队列或集群的资源。
+- 都支持对队列分配策略 (应用程序到队列的映射，一般是基于用户名或组名的一些规则) 进行配置。
 - 都可以通过URL`https://<ResourceManager URL>/cluster/scheduler`查看队列资源的分配和使用情况。
+- 都支持限制每个用户和每个队列运行的应用程序的数量，以防止死锁。
+- 都支持资源的强夺，以防止死锁。
 
-两者的区别主要是实现上的区别以及参数配置上的区别。个人感觉公平调度器对优先级以及并发度的控制比容器调度器更直观。
+### 两者的区别
 
-本人猜测，[容器调度器由HortonWorks主导](https://hortonworks.com/blog/yarn-capacity-scheduler/)，而[公平调度器由cloudera主导](https://blog.cloudera.com/blog/2016/01/untangling-apache-hadoop-yarn-part-3/)。
+- 对优先级的支持：容量调度器只是通过给队列分配不同的保证容量以及选择性地禁用资源强夺来部分支持优先级，而公平调度器可以通过应用程序和队列两个层面上的权重来实现优先级。
+- 对并发应用数量的控制：容量调度器是硬性限制（也可以通过控制分配给应用程序主控的资源来间接实现柔性限制），而公平调度器直接是柔性限制。
+- 队列内的资源分配策略：容量调度器是FIFO，而公平调度器支持三种内置的可插拔的策略：FIFO, FAIR, 和DRF。
+
+## 总结
+
+总体来说，容量调度器和公平调度器的相似多过区别。个人感觉，两者的区别主要是实现上的区别以及参数配置上的区别（运行时的性能和表现肯定也有区别）。公平调度器对优先级以及并发度的控制比容器调度器更直观。另外，本人猜测，[容器调度器由HortonWorks主导](https://hortonworks.com/blog/yarn-capacity-scheduler/)，而[公平调度器由cloudera主导](https://blog.cloudera.com/blog/2016/01/untangling-apache-hadoop-yarn-part-3/)。
 
 最后一点小提示：调度器可以用terasort这样的MapReduce程序来进行简单测试。比如：
 
