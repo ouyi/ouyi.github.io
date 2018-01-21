@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About
+description: "This blog is based on Jeykll and hosted on GitHub. For issues or improvement suggestions, please feel free to open issues or pull requests."
 permalink: /about/
 ---
 
