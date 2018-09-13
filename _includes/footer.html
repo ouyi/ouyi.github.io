@@ -24,7 +24,7 @@
         <ul class="social-media-list">
           {% for media in site.social_media %}
           <li>
-            <a rel="nofollow" target="_blank" href="{{ media.profile_link }}"><span class="icon"><i class="fa {{ media.fa_icon }}"></i></span><span class="username">&nbsp{{ media.media_name }}</span></a>
+            <a rel="nofollow" target="_blank" href="{{ media.profile_link }}"><span class="icon"><i class="fa {{ media.fa_icon }}"></i></span><span class="username">&nbsp;{{ media.media_name }}</span></a>
           </li>
           {% endfor %}
         </ul>
