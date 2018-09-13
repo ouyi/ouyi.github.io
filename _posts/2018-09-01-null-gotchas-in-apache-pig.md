@@ -23,7 +23,7 @@ In Apache Pig, Boolean expressions with nulls can yield [three possible values](
 
 When I first saw the following code:
 
-```
+```pig_latin
 A = load 'input.txt' as (k:int, v:int);
 B = filter A by k == 1;
 C = filter A by k != 1;
@@ -42,7 +42,7 @@ CTRL+D
 
 Then, we can run the following Pig commands and examine the dumped values:
 
-```
+```pig_latin
 A = load 'input1.txt' using PigStorage(',') as (k:int, v:chararray);
 
 B = filter A by k == 1;
@@ -81,7 +81,7 @@ CTRL+D
 
 Then, we can run the following Pig commands and examine the dumped values:
 
-```
+```pig_latin
 A = load 'input2.txt' using PigStorage(',') as (k:chararray, v:chararray);
 
 B = filter A by k matches 'a';
@@ -111,7 +111,7 @@ dump U;
 
 This can be verified with the following tests:
 
-```
+```pig_latin
 A = load 'input1.txt' using PigStorage(',') as (k:int, v:chararray);
 dump A;
 -- (1,X)
@@ -141,7 +141,7 @@ Note the different bincond (ternary operator) expressions used to generate `C` a
 
 >Finally, group handles nulls in the same way that SQL handles them: by collecting all records with a null key into the same group. <cite>-- [Gates, A. and Dai, D., 2016](#gates), p. 44</cite>
 
-```
+```pig_latin
 A = load 'input3.txt' using PigStorage(',') as (k:int, v:chararray);
 dump A;
 -- (1,X)
@@ -158,7 +158,7 @@ dump B;
 
 >As in SQL, null values for keys do not match anything, even null values from the other input. So, for inner joins, all records with null key values are dropped. For outer joins, they will be retained but will not match any records from the other input. <cite>-- [Gates, A. and Dai, D., 2016](#gates), p. 47</cite>
 
-```
+```pig_latin
 A = load 'input3.txt' using PigStorage(',') as (k:int, v:chararray);
 B = load 'input3.txt' using PigStorage(',') as (k:int, v:chararray);
 
