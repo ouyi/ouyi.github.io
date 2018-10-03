@@ -4,6 +4,7 @@ title:  "Null gotchas in Apache Pig"
 date:   2018-09-01 15:23:07 +0000
 last_modified_at: 2018-09-13 20:48:36
 category: post
+mathjax: true
 tags: [Big Data]
 ---
 
@@ -29,7 +30,19 @@ B = filter A by k == 1;
 C = filter A by k != 1;
 ```
 
-I naively believed that the union of `B` and `C` is equivalent to `A`, following the [Complement Laws](https://en.wikipedia.org/wiki/Complement_(set_theory)#Properties). That **would be** correct, if there were **no nulls** in the input. This can be demonstrated by the following experiments.
+I naively believed that the union of `B` and `C` is equivalent to `A`, following the [Complement Laws](https://en.wikipedia.org/wiki/Complement_(set_theory)#Properties), which says the union of a set $S$ and its absolute complement $S^\complement$ is the universe $U$, i.e.,
+
+$$ S \cup S^\complement = U.$$
+
+The problem is that in our example, `C` is not `B`'s absolute complement, due to the nulls, i.e.,
+
+$$B^\complement = C \cup \text{\{records whose k field is null\}}$$
+
+$$\Longrightarrow$$ 
+
+$$ A = B \cup B^\complement = B \cup C \cup \text{\{records whose k field is null\}}.$$ 
+
+So applying the Complement Laws **would be** correct, if there were **no nulls** in the input. This can be demonstrated by the following experiments.
 
 First, lets prepare an input file, which contains a record with a null field:
 ```
