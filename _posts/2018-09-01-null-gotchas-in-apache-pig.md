@@ -29,7 +29,7 @@ B = filter A by k == 1;
 C = filter A by k != 1;
 ```
 
-I naively believed that the union of `B` and `C` is equivalent to `A`. That **would be** the case, if there were **no nulls** in the input. This can be demonstrated by the following experiments.
+I naively believed that the union of `B` and `C` is equivalent to `A`, following the [Complement Laws](https://en.wikipedia.org/wiki/Complement_(set_theory)#Properties). That **would be** correct, if there were **no nulls** in the input. This can be demonstrated by the following experiments.
 
 First, lets prepare an input file, which contains a record with a null field:
 ```
@@ -178,6 +178,8 @@ dump D;
 ```
 
 Note grouping treats nulls as identical values, whereas joining treats nulls as different (by not matching them).
+
+## Summary
 
 In a nut shell, nulls in Apache Pig:
 - can be produced by Boolean expressions
