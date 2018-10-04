@@ -42,7 +42,7 @@ $$\Longrightarrow$$
 
 $$ A = B \cup B^\complement = B \cup C \cup \text{\{records whose k field is null\}}.$$ 
 
-So applying the Complement Laws **would be** correct, if there were **no nulls** in the input. This can be demonstrated by the following experiments.
+So the Complement Laws still apply. We just need to keep in mind that the absolute complement of `filter A by condition` is `filter A by not condition` **plus** the records whose k field `is null`. This can be demonstrated by the following experiments.
 
 First, lets prepare an input file, which contains a record with a null field:
 ```
