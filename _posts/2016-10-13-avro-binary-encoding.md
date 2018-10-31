@@ -90,4 +90,4 @@ $ xxd person.avro
 0000090: d252 a1aa 5792 cbcd fd20 d8c3 41         .R..W.... ..A
 ```
 
-The string area on the right-hand side reveals two key-value pairs with keys being `avro.schema` and `avro.codec`. The sync marker is `fa4b c7d2 52a1 aa57 92cb cdfd 20d8 c341`, which starts at the byte address 0x0000070 and 0x000008D. The byte 0x08 at address 0x0000082 and 0x0A at address 0x0000087 are the lengths of the strings following them (John and Alice).
+The string area on the right-hand side reveals two key-value pairs with keys being `avro.schema` and `avro.codec`. The sync marker is `fa4b c7d2 52a1 aa57 92cb cdfd 20d8 c341`, which starts at the byte addresses `0x0000070` and `0x000008D`. The bytes `0x08` at address `0x0000082` and `0x0A` at address `0x0000087` are the lengths of the strings following them (`John` and `Alice`).
