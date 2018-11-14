@@ -25,4 +25,21 @@ installed). The variable can be passed via the command-line like this:
 
 The role can be included in a playbook or included as a dependency of another
 role. The code and usage examples are [available
-here](https://github.com/ouyi/ansible_yum_updown). 
+here](https://github.com/ouyi/ansible_yum_updown).
+
+*Update (14th Nov. 2018)*:
+
+The feature has been available in Ansible since the version 2.4, provided via a
+parameter `allow_downgrade`. Setting this parameter to `True` has the side effect
+of making the `yum` module behave in a non-idempotent way, according to the
+[module documentation](https://docs.ansible.com/ansible/latest/modules/yum_module.html).
+The workaround described above has the same side effect.
+
+The following is how I would use this feature:
+
+```
+- name: "Ensure {{ rpm_name_version }} is installed"
+  yum: name={{ rpm_name_version }} state=present update_cache=yes allow_downgrade={{ rollback | default('no') }}
+```
+
+By defaulting the parameter to `no`, the feature is deactivated for a normal deployment. For a rollback, the feature can be activated by setting the `rollback` parameter to `yes`, i.e., `--extra-vars "rollback=yes"`.
