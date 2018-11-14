@@ -37,9 +37,11 @@ The workaround described above has the same side effect.
 
 The following is how I would use this feature:
 
+{% highlight yaml %}
 {% raw %}
 - name: "Ensure {{ rpm_name_version }} is installed"
   yum: name={{ rpm_name_version }} state=present update_cache=yes allow_downgrade={{ rollback | default('no') }}
 {% endraw %}
+{% endhighlight %}
 
 By defaulting the parameter to `no`, the feature is deactivated for a normal deployment. For a rollback, the feature can be activated by setting the `rollback` parameter to `yes`, i.e., `--extra-vars "rollback=yes"`.
