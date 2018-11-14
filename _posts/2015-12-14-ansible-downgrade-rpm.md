@@ -40,7 +40,11 @@ The following is how I would use this feature:
 {% highlight yaml %}
 {% raw %}
 - name: "Ensure {{ rpm_name_version }} is installed"
-  yum: name={{ rpm_name_version }} state=present update_cache=yes allow_downgrade={{ rollback | default('no') }}
+  yum: 
+    name: "{{ rpm_name_version }}"
+    state: present
+    update_cache: yes
+    allow_downgrade: "{{ rollback | default('no') }}"
 {% endraw %}
 {% endhighlight %}
 
