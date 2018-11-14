@@ -2,7 +2,7 @@
 layout: post
 title:  "Downgrade RPMs using Ansible"
 date:   2015-12-14 20:48:20 +0000
-last_modified_at: 2018-01-14 19:55:23
+last_modified_at: 2018-11-14 16:42:42
 category: cicd
 tags: [Ansible, CI/CD]
 ---
