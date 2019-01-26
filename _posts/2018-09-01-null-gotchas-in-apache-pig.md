@@ -2,7 +2,7 @@
 layout: post
 title:  "Null gotchas in Apache Pig"
 date:   2018-09-01 15:23:07 +0000
-last_modified_at: 2018-09-13 20:48:36
+last_modified_at: 2018-10-05 19:45:21
 category: post
 mathjax: true
 tags: [Big Data]

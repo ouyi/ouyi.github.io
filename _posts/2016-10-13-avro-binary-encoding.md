@@ -2,7 +2,7 @@
 layout: post
 title:  "A short introduction to Avro binary encoding"
 date:   2016-10-13 18:50:42 +0000
-last_modified_at: 2017-12-27 20:21:51
+last_modified_at: 2018-10-31 18:26:24
 category: post
 tags: [Avro]
 ---
@@ -32,12 +32,14 @@ The above rules translated in plain English are:
 * The _header_ consists of the string literal `Obj1`, _metadata_, and a _sync marker_. The _metadata_ are persisted as key-value pairs. The most important ones among them are the schema and the compression codec (with the keys `avro.schema` and `avro.codec`).
 
 * A _block_ starts with information about the number of objects it contains, followed by the total size of those objects in bytes after compression, then by the serialized objects, and finally ends with the sync marker. The _sync marker_ has two major purposes:
-    - It enables detection of corrupt blocks and help ensure data integrity.
+    - It enables detection of corrupt blocks and helps to ensure data integrity.
     - It permits efficient splitting of files for [MapReduce processing](https://avro.apache.org/docs/1.7.7/mr.html).
 
 * An _object_ is serialized as the sequence of its fields in binary form.
 
-* A _field's binary form_ consists of the field length or structural information, which is optional and present only if it can not be derived from the schema, and the binary encoded field value.
+* A _field's binary form_ consists of:
+1. the field length or structural information, which is optional and present only if it can not be derived from the schema (e.g., the lengths of an `int` or `long` fields are defined), and
+2. the binary encoded field value.
 
 ## Example
 
@@ -88,4 +90,4 @@ $ xxd person.avro
 0000090: d252 a1aa 5792 cbcd fd20 d8c3 41         .R..W.... ..A
 ```
 
-The string area on the right-hand side reveals two key-value pairs with keys being `avro.schema` and `avro.codec`.
+The string area on the right-hand side reveals two key-value pairs with keys being `avro.schema` and `avro.codec`. The sync marker is `fa4b c7d2 52a1 aa57 92cb cdfd 20d8 c341`, which starts at the byte addresses `0x0000070` and `0x000008D`. The bytes `0x08` at address `0x0000082` and `0x0A` at address `0x0000087` are the lengths of the strings following them (`John` and `Alice`).
