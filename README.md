@@ -25,3 +25,6 @@ Show a bundle package content:
 
     bundle show minima
     
+Update the last modification time using the system time:
+
+    ./lastmod.sh _posts/2015-12-14-ansible-downgrade-rpm.md
