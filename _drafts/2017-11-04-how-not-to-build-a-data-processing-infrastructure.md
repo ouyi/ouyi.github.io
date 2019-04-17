@@ -23,3 +23,5 @@ tags: [data processing]
 ## Small files and big files
 
 ## Merge before upload
+
+## Separate logging and joining vs unified logging and projection
