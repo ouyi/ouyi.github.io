@@ -107,6 +107,39 @@ In the end, I opted to manipulate the mapper container size as follows:
 
 `pig -Dmapreduce.map.java.opts=-Xmx2304m -Dmapreduce.map.memory.mb=2880 -stop_on_failure -x tez ...`
 
+The parameters `mapreduce.map.memory.mb` and `mapreduce.map.java.opts` specify the _physical memory limit_ and _JVM heap space limit_ of the _mapper_ containers used by this application. Similarly, `mapreduce.reduce.memory.mb` `mapreduce.reduce.java.opts` specify the memory usage of the _reducer_ containers. If not specified, the cluster default will be used. As an example, for an EMR cluster based on `m3.xlarge` instances, we have the following default settings:
+
+```
+Physical memory limits (P):
+- mapreduce.map.memory.mb 1440
+- mapreduce.reduce.memory.mb 2880
+
+JVM heap space limits (H):
+- mapreduce.map.java.opts Xmx1152m
+- mapreduce.reduce.java.opts -Xmx2304m
+```
+
+The ratio between `P` and `H` is by default `P * 0.8 = H`. The ratio shall be kept when changing the container size, i.e., usually `P` and `H` shall be specified at the same time, unless you really know what you are doing.
+
+For the same EMR cluster, other interesting memory and container-size related defaults are:
+
+```
+yarn.app.mapreduce.am.resource.mb 2880
+yarn.scheduler.minimum-allocation-mb 32
+yarn.scheduler.maximum-allocation-mb 11520
+yarn.nodemanager.resource.memory-mb 11520
+```
+
+The parameter `yarn.nodemanager.resource.memory-mb` specifies the amount of physical memory available to the node manager on a single data node. Together with the parameter `yarn.app.mapreduce.am.resource.mb` they specify the maximum number of containers which can be used for application masters (AMs) on each data node. In our case, it is
+
+```
+Number of AMs (per node): 11520 / 2880 = 4
+```
+
+That is, if all memory resources are used by the AMs, we can have 4 of them running in parallel. By controlling that number, we basically control the concurrent running YARN applications.
+
+The parameters `yarn.scheduler.minimum-allocation-mb` and `yarn.scheduler.maximum-allocation-mb` specify the memory chunk sizes which can be allocated by the node manager. In our case, it means the data node can have between 1 and 360 containers (`11520/11520 = 1` and `11520/32=360`).
+
 ### Summary
 
 The issue was actually caused by a natural increase of the text file size. Thats why the things tried in the last section did the trick. All of them were in a way changing the memory usage. In this case, increasing the container size (scaling up vertically) is the simple and correct solution. Of cause the issue could have been dealt with by replacing the UDF by join in Pig. But that would require much more effort.
