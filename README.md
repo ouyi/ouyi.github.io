@@ -6,6 +6,22 @@ Memory Spills is [a blog based on Jeykll and hosted on GitHub](https://ouyi.gith
 
 ## Useful commands
 
+### Docker-based environment
+
+Build the image:
+
+    docker build . -t docker-github-pages
+
+Start the container serving the static site:
+
+    docker run -it -v "$PWD":/usr/src/app -p 8000:8000 docker-github-pages
+
+Run a single command:
+
+    docker run -it -v "$PWD":/usr/src/app -p 8000:8000 docker-github-pages bundle exec github-pages versions
+
+### Host-based environment 
+
 One-liner to set up the environment:
 
     curl -sSL https://rvm.io/mpapis.asc | gpg --import - \
@@ -13,8 +29,8 @@ One-liner to set up the environment:
     && bash -l -c 'source /etc/profile.d/rvm.sh \
     && rvm reload \
     && rvm requirements run \
-    && rvm install 2.4.1 \
-    && rvm use 2.4.1 --default \
+    && rvm install 2.5.3 \
+    && rvm use 2.5.3 --default \
     && gem install jekyll bundler sass'
 
 Test locally:
