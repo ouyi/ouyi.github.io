@@ -8,6 +8,10 @@ Memory Spills is [a blog based on Jeykll and hosted on GitHub](https://ouyi.gith
 
 ### Docker-based environment
 
+The easiest method to have a running envrionment with everything installed:
+
+    docker-compose up
+
 Build the image:
 
     docker build . -t docker-github-pages
