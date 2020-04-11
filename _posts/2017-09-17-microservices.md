@@ -49,9 +49,9 @@ Microservices可以看作是SOA的改进版(SOA done right)。它强调这些特
 - 便于进化的设计 (evolutionary design)
 - 等等
 
-我觉得Microservices强调的这些特性结合了近些年业界的一些最佳实践。比如分散的治理和基础设施的自动化就是DevOps和CI/CD的另一种说法。最后，我个人感觉，不管是组件化，SOA，还是Microservices，如何降低组件或服务之间的耦合(dumb pipes)，让软件易于修改和演绎进化，都是软件设计的艺术。
+我觉得Microservices强调的这些特性指导了近些年业界的一些最佳实践。比如基础设施的自动化对应的实践就是DevOps和CI/CD。近些年一些比较火的软件项目也让Microservices架构有了好的落地实施的方案。最好的例子应该数Docker和Kubernetes了。最后，我个人感觉，不管是组件化，SOA，还是Microservices，如何降低组件或服务之间的耦合(dumb pipes)，让软件易于修改和演绎进化，又能够同时避免过度设计，才是是软件设计的艺术。
 
-不理解Microservices的程序猿不是好架构狮:wink:。这里是我对这个概念的理解，有错误欢迎斧正(pull requests :wink:)。参考链接：
+不理解Microservices的程序猿不是好架构狮:wink:。这里是我个人的的理解，有错误欢迎斧正(pull requests :wink:)。参考链接：
 
 - [组件化 (Componentization)](http://blogs.windriver.com/koning/2006/09/components.html)
 - [面向服务的架构 (SOA)](https://stackoverflow.com/a/25625813)
