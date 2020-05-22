@@ -9,6 +9,9 @@ lang: zh
 ref: microservices
 ---
 
+![architecture-pen-tsai-unsplash](https://user-images.githubusercontent.com/15970333/82701387-669c2200-9c70-11ea-9785-a23dbedb7cc3.jpg "Modern architecture")
+
+
 软件工程领域隔三差五就会出来一些听起来很虚幻的流行词(buzzwords)。
 Microservices和SOA(service-oriented architecture 面向服务的架构)就属于这一类。
 SOA比Microservices出来得更早，两个词都跟服务和架构有关，
