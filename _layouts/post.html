@@ -10,14 +10,23 @@ layout: default
         {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
         {{ page.date | date: date_format }}
       </time>
+
       {% if page.tags %} |
-      {% for tag in page.tags %}
-        <a class="post-tag" href="{{ site.baseurl }}/tags/#{{ tag | slugify }}">{{ tag }}</a>
-      {% endfor %}
+        {% for tag in page.tags %}
+          <a class="post-tag" href="{{ site.baseurl }}/tags/#{{ tag | slugify }}">{{ tag }}</a>
+        {% endfor %}
       {% endif %}
       {% if page.author %}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
-      {% endif %}</p>
+          • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
+      {% endif %}
+
+      {% if "zh" != page.lang %} <!--number_of_word for cjk requires jekyll v4.1.0-->
+        {% assign word_count = content | number_of_words %}
+        {% if word_count > 180 %}
+          | ~ {{ word_count | divided_by: 150 }} minutes to read
+        {% endif %}
+      {% endif %}
+    </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
