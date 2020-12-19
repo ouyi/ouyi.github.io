@@ -8,9 +8,18 @@ Memory Spills is [a blog based on Jeykll and hosted on GitHub](https://ouyi.gith
 
 ### Docker-based environment
 
-The easiest method to have a running envrionment with everything installed:
+The easiest way to have a local test envrionment up and running is executing this command in a Linux or macOS console:
 
     docker-compose up
+
+This will install all dependencies and bring up a test web server, all in a Docker container. If everything works, the following messages are displayed in the console:
+
+    jekyll_1  |     Server address: http://0.0.0.0:8000/
+    jekyll_1  |   Server running... press ctrl-c to stop.
+
+The blog site is available for preview at `http://localhost:8000/`. 
+
+If for whatever reason docker-compose is not wanted, the following manual steps can achieve the same effect. 
 
 Build the image:
 
