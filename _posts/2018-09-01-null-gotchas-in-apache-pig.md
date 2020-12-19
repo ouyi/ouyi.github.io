@@ -16,6 +16,8 @@ Apache Pig's **concept of null** was not straight forward to me, although it is 
 
 I missed to read this and had some fun :wink: investigating a production issue related to nulls. For people like me who do not read (tech) books front to back, it is easier to have all the pieces of information related to a topic together in one place. Therefore the following is a collection of important points on the concept of null from the book, together with some simple experiments.
 
+![pig-logo](https://user-images.githubusercontent.com/15970333/102699855-8a483a80-4248-11eb-89c7-e228e4dd30f4.gif "Apache Pig logo")
+
 ## Boolean operators and filters
 
 >For Boolean operators, nulls follow the SQL ternary logic. Thus, `x == null` results in a value of `null`, not `true` (even when `x` _is also_ `null`) or `false`. Filters pass through only those values that are `true`. <cite>-- [Gates, A. and Dai, D., 2016](#gates), pp. 54-55</cite>

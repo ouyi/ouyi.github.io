@@ -7,6 +7,8 @@ category: hadoop
 tags: [Big Data, Hadoop Streaming]
 ---
 
+![hadoop-logo](https://user-images.githubusercontent.com/15970333/102699853-874d4a00-4248-11eb-8d50-302b5ebc7b57.jpg "Apache Hadoop logo")
+
 I was working on a simple tool (a distributed `grep`) using Hadoop streaming in Bash. Everything works fine when testing locally with the standard approach:
 
 {% highlight bash %}
