@@ -79,7 +79,7 @@ An _IAM role_ defines a set of permissions via the attached policies. Roles cann
 
 The trust relationship is defined in the role's trust policy when the role is created, as shown in the screenshot below, where the trusted entity can be either an AWS service, or a user (Another AWS account, Web identity, or SAML 2.0 federation).
 
-<img class="center" src="https://user-images.githubusercontent.com/15970333/102698329-ce354280-423c-11eb-9022-5396d57641a1.png" />
+<img class="center" src="https://user-images.githubusercontent.com/15970333/102698329-ce354280-423c-11eb-9022-5396d57641a1.png" alt="screenshot IAM create role" />
 
 One can even use roles to delegate access between AWS accounts. To assume a role from a different account, that account must be trusted by the role.
 
@@ -105,7 +105,7 @@ To grant permissions to a human user, we shall first check if any [AWS managed p
 
 If the policy is attached to a role contained in an instance profile, any instance launched with the instance profile[^3] will have the role, i.e., applications in that instance will be able to get temporary security credentials, which enable them access services and resources as defined in the policy.
 
-<img class="center" src="https://user-images.githubusercontent.com/15970333/102694734-40009280-4223-11eb-8d60-ee2eb0357bb9.png" />
+<img class="center" src="https://user-images.githubusercontent.com/15970333/102694734-40009280-4223-11eb-8d60-ee2eb0357bb9.png" alt="How the IAM concepts play together" />
 
 This post gave an overview of the selected IAM core concepts, their use cases, and their relationships. Hopefully you find this useful.
 
