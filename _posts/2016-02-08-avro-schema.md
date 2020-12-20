@@ -9,6 +9,8 @@ tags: [Avro]
 
 Avro schema supports nested record definitions, i.e., definition of a custom record, whose fields are again some other custom records. One of the questions I had while working on an Avro schema was: _why do I have to repeat the name field in a subrecord definition_?
 
+![richard-r-schunemann-EIeQUi77QGg-unsplash](https://user-images.githubusercontent.com/15970333/102717719-5c183880-42e4-11eb-876e-89d51ab7ce20.jpg "Avro -- photo by Richard R. Schünemann on Unsplash") 
+
 Let's take a look at the "address" part of this sample schema:
 
 {% highlight json %}

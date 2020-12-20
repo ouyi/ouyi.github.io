@@ -13,6 +13,8 @@ When developing applications processing Avro data, a basic understanding of Avro
 I disscussed a [small topic on Avro schema here]({{ site.baseurl }}{% post_url 2016-02-08-avro-schema %}).
 The focus of this post is [Avro binary encoding](https://avro.apache.org/docs/1.7.7/spec.html#binary_encoding).
 
+![alexander-sinn-YYUM2sNvnvU-unsplash](https://user-images.githubusercontent.com/15970333/102717770-bf09cf80-42e4-11eb-8807-a9e97a7bb754.jpg "Binary code -- photo by Alexander Sinn on Unsplash")
+
 ## Avro file structure
 
 The structure of a binary Avro file can be described with the following informal production rules:
