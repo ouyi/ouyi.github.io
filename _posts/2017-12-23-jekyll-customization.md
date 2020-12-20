@@ -16,6 +16,8 @@ I had to do some customizations to make it work as I wish. Luckily, Jekyll
 allows customizations of almost everything of the theme. This post shows some
 of the customizations this site applies on top of minima.
 
+![charlie-larkman-oi3Dwxyc0vE-unsplash](https://user-images.githubusercontent.com/15970333/102717561-7ac9ff80-42e3-11eb-9ebc-f0b651688364.jpg "Modified car -- photo by Charlie Larkman on Unsplash")
+
 ## Override theme defaults
 
 The command `bundle show minima` can be used to find the location where the theme
