@@ -9,14 +9,12 @@ lang: zh
 ref: microservices
 ---
 
-![edward-he-uKyzXEc2k_s-unsplash](https://user-images.githubusercontent.com/15970333/82702630-a3691880-9c72-11ea-9e00-66772fd34b83.jpg "Modern architecture")
-Photo by Edward He on Unsplash
-
-
 软件工程领域隔三差五就会出来一些听起来很虚幻的流行词(buzzwords)。
 Microservices和SOA(service-oriented architecture 面向服务的架构)就属于这一类。
 SOA比Microservices出来得更早，两个词都跟服务和架构有关，
 难道又是换汤不换药(old wine in new bottles)，用来忽悠的？
+
+![edward-he-uKyzXEc2k_s-unsplash](https://user-images.githubusercontent.com/15970333/82702630-a3691880-9c72-11ea-9e00-66772fd34b83.jpg "Modern architecture -- Photo by Edward He on Unsplash")
 
 SOA和Microservices其实都是组件化(componentization)这个朴实的概念与时俱进的产物。
 听到组件化，应该不会有人觉得玄乎。它的核心思想其实就是分而治之(divide and conquer)，
