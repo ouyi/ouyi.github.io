@@ -13,8 +13,6 @@ ref: yarn-schedulers
 {:toc}
 最近单位的Hadoop集群发生了死锁问题 (deadlock)，于是对Hadoop的调度程序发生了兴趣。YARN支持可插拔的任务调度器（严格来说也许应该叫资源分配器）。官方文档里面讲了两种：容量调度器 (capacity scheduler) 和公平调度器 (fair scheduler)。默认的是容量调度器。下面是啃完文档后的一点总结，浓缩的都是精华 :wink:。
 
-![hadoop-logo](https://user-images.githubusercontent.com/15970333/102699853-874d4a00-4248-11eb-8d50-302b5ebc7b57.jpg "Apache Hadoop logo")
-
 ## 容量调度器
 
 容量调度器旨在允许多组织（或者多用户）共享大型集群，最大限度地提高集群的吞吐量和利用率，同时为每个组织提供容量保证。
@@ -173,3 +171,5 @@ done
 
 - 容量调度器: [capacity scheduler](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 - 公平调度器: [fair scheduler](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/FairScheduler.html)
+
+![hadoop-logo](https://user-images.githubusercontent.com/15970333/102699853-874d4a00-4248-11eb-8d50-302b5ebc7b57.jpg "Apache Hadoop logo")
