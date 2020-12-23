@@ -20,16 +20,16 @@ IAM is crucial to the security of applications and infrastructures built on AWS.
 
 ## What is IAM
 
-IAM is an AWS security feature for managing access to AWS services and resources. It is about authentication and authorization. It is worth mentioning that AWS services and resources are not only accessed by _human users_, but also by _AWS services_ such as EC2 or Lambda. Therefore in an AWS context:
+IAM is an AWS security feature for managing access to AWS services and resources. These services and resources are not only accessed by _human users_, but also by _nonhuman entities_ such as other services, instances, or applications. Therefore the term _security principal_ refers to either a human user or such a nonhuman entity. AWS IAM covers both aspects of access control: authentication and authorization.
 
-- _Authentication_ validates that users (or services) are who they claim to be, and
-- _Authorization_ gives the authenticated users (or services) permissions they are supposed to have and denies any other accesses.
+- _Authentication_ validates principals are who they claim to be, and
+- _Authorization_ gives the authenticated principals permissions they are supposed to have and denies any other accesses.
 
 ## The core concepts
 
-For me it was helpful to know for each of the IAM concepts, whether it is relevant to user accesses or to service accesses. This is summarized in the following table:
+For me it was helpful to know for each of the IAM concepts, whether it is relevant to human users or nonhuman entities. This is summarized in the following table:
 
-| Concept  | User | Service |
+| Concept  | Human users | Nonhuman entities |
 |----------|------|---------|
 | Policies | X    | X       |
 | Users    | X    |         |
@@ -40,7 +40,7 @@ For me it was helpful to know for each of the IAM concepts, whether it is releva
 
 In IAM, permissions are defined in policies. A _policy_ specifies what kind of accesses are allowed for which resources under what conditions. Policies can be attached to users, groups, and roles[^1]. Attaching a policy to a user gives the user permissions specified in the policy. The implications of attaching a policy to groups or roles are discussed later in this post.
 
-The example[^2] below is a policy that allows an IAM user to start or stop EC2 instances, but only for instances having a `Owner` tag with the value matching the user's username. The `DescribeInstances` permissions are needed to complete this action on the AWS console.
+The example[^2] below is a policy that allows an IAM user to start or stop EC2 instances, but only for instances having an `Owner` tag with the value matching the user's username. The `DescribeInstances` permissions are needed to complete this action on the AWS console.
 
 ```json
 {
