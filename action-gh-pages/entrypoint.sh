@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -l
 
 bundle install && \
 bundle exec jekyll build --safe && \
