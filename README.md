@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/ouyi/ouyi.github.io.svg?branch=master)](https://travis-ci.org/ouyi/ouyi.github.io)
 
+![GitHub Actions Build Status](https://github.com/ouyi/ouyi.github.io/.github/workflows/main.yml/badge.svg)
+
 # Memory Spills
 
 Memory Spills is [a blog based on Jeykll and hosted on GitHub](https://ouyi.github.io).
