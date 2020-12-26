@@ -1,0 +1,10 @@
+name: Default workflow to run a dockerized build 
+on: push
+
+jobs:
+  build:
+    name: Dockerized build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./action-gh-pages
