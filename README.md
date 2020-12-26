@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/ouyi/ouyi.github.io.svg?branch=master)](https://travis-ci.org/ouyi/ouyi.github.io)
 
-![GitHub Actions Build Status](https://github.com/ouyi/ouyi.github.io/.github/workflows/main.yml/badge.svg)
+![GitHub Actions Build Status](https://github.com/ouyi/ouyi.github.io/workflows/.github/workflows/main.yml/badge.svg)
 
 # Memory Spills
 
