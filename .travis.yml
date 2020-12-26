@@ -1,7 +1,0 @@
-language: ruby
-cache: bundler
-install:
-  - bundle install
-script:
-  - bundle exec jekyll build --safe
-  - bundle exec htmlproofer ./_site --disable-external
