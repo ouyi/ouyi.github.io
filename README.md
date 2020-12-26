@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.org/ouyi/ouyi.github.io.svg?branch=master)](https://travis-ci.org/ouyi/ouyi.github.io)
 
-![Jekyll site CI](https://github.com/ouyi/ouyi.github.io/workflows/.github/workflows/jekyll/badge.svg)
+![Jekyll site CI](https://github.com/ouyi/ouyi.github.io/workflows/jekyll/badge.svg)
 
-![GitHub Pages build](https://github.com/ouyi/ouyi.github.io/workflows/.github/workflows/main/badge.svg)
+![GitHub Pages build](https://github.com/ouyi/ouyi.github.io/workflows/main/badge.svg)
 
 # Memory Spills
 
