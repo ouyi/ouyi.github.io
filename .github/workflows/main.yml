@@ -1,4 +1,4 @@
-name: Default workflow to run a dockerized build 
+name: GitHub Pages Build 
 on: push
 
 jobs:
