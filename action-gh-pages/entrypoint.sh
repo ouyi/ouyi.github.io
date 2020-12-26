@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 #bundle exec jekyll build --safe
 #bundle exec htmlproofer ./_site --disable-external
