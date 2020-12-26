@@ -9,7 +9,11 @@ Memory Spills is [a blog based on Jeykll and hosted on GitHub](https://ouyi.gith
 
 ## Useful commands
 
-### Docker-based environment
+### Set up local test envrionment
+
+**TLDR**: run `docker-compose up` in a console and preview the blog at http://localhost:8000/ with a browser.
+
+#### Docker-based environment
 
 The easiest way to have a local test envrionment up and running is executing this command in a Linux or macOS console:
 
@@ -20,7 +24,7 @@ This will install all dependencies and bring up a test web server, all in a Dock
     jekyll_1  |     Server address: http://0.0.0.0:8000/
     jekyll_1  |   Server running... press ctrl-c to stop.
 
-The blog site is available for preview at `http://localhost:8000/`. 
+The blog site is available for preview at http://localhost:8000/ . 
 
 If for whatever reason docker-compose is not wanted, the following manual steps can achieve the same effect. 
 
@@ -36,7 +40,7 @@ Run a single command:
 
     docker run -it -v "$PWD":/usr/src/app -p 8000:8000 docker-github-pages bundle exec github-pages versions
 
-### Host-based environment 
+#### Host-based environment 
 
 One-liner to set up the environment:
 
@@ -52,6 +56,8 @@ One-liner to set up the environment:
 Test locally:
 
     bundle exec jekyll serve --port 8000 --host 0.0.0.0 --drafts
+
+### Misc
 
 Show a bundle package content:
 
