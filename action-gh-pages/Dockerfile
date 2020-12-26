@@ -8,4 +8,6 @@ RUN apk update \
           /tmp/* \
           /var/tmp/*
 
+COPY entrypoint.sh /entrypoint.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
