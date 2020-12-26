@@ -1,4 +1,4 @@
-name: GitHub Pages Build 
+name: GitHub Pages build
 on: push
 
 jobs:
