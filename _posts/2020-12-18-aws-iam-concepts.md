@@ -112,12 +112,17 @@ However, I still have an open question for myself and the reader: when launching
 
 To grant permissions to a human user, we shall first check if any [AWS managed policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) can be directly used. If not, a customer managed policy can be created. The policy can be attached to either a group which the user is a member of, or a role which the user can assume.
 
-So if a policy `p` has been attached to group `g` and role `r`, there are two options for an IAM user to obtain permissions defined in `p`: 
+Let's assume a set of permissions (for accessing some sample AWS service or resource) are defined in a policy `p`, which has been attached to a group `g` and a role `r`. 
+
+For an IAM user to obtain permissions defined in `p`, there are two options:
 
 1. being a member of `g`, or 
 2. assuming `r`.
 
-For an instance to obtain those permissions, it needs to be launched with an instance profile corresponding to that role `r`, or some user's access keys need to be deployed on that instance.
+For an instance to obtain the same set of permissions, there are also two options:
+
+1. launching it with an instance profile corresponding to role `r`, or 
+2. deploying a pair of access and secret keys (created by a member of `g`) on it.
 
 <img class="center" src="https://user-images.githubusercontent.com/15970333/102716135-279f7f00-42da-11eb-946e-2a0022592493.png" alt="How the IAM concepts play together" />
 
