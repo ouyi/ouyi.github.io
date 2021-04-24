@@ -22,13 +22,13 @@ IAM is crucial to the security of applications and infrastructures built on AWS.
 
 - Use policies to define permissions
 - To grant long-term permissions to users, attach the policies to groups 
-- To grant shor-term permissions to users or services, attach the policies to roles 
-- To pass a role to applications EC2 instances, use a corresponding instance profile
+- To grant short-term permissions to users or services, attach the policies to roles 
+- To pass a role to EC2 instances, use a corresponding instance profile
 
 
 ## What is IAM
 
-IAM is an AWS security feature for managing access to AWS services and resources. These services and resources are not only accessed by _human users_, but also by _nonhuman entities_ such as other services, instances, or applications. Therefore the term _security principal_ refers to either a human user or such a nonhuman entity. AWS IAM covers both aspects of access control: authentication and authorization.
+IAM is an AWS security feature for managing access to AWS services and resources. These services and resources are not only accessed by _human users_, but also by _non-human entities_ such as other services, instances, or applications. Therefore the term _security principal_ refers to either a human user or such a non-human entity. AWS IAM covers both aspects of access control: authentication and authorization.
 
 - _Authentication_ validates principals are who they claim to be, and
 - _Authorization_ gives the authenticated principals permissions they are supposed to have and denies any other accesses.
